@@ -11,7 +11,6 @@ function TbodyWithAction({
   deleteAction,
   actionNotDisplay,
   customAction,
-  customActionSecond,
   confirmationUrl,
   Detail,
   status,
@@ -29,6 +28,12 @@ function TbodyWithAction({
         </tr>
       ) : data.length ? (
         data.map((data, index) => {
+          const isConfirmationDisabled =
+            data.StatusPengerjaan === "Pending" ||
+            data.StatusPengerjaan === "Close";
+          const isDetailDisabled =
+            data.Tindakan === undefined && data.GantiSparepart === undefined;
+
           return (
             <tr key={index}>
               {Object.keys(data).map(
@@ -43,9 +48,7 @@ function TbodyWithAction({
               )}
               {!actionNotDisplay && (
                 <td>
-                  {customAction && customAction(data._id, data.StatusWO)}
-                  {customActionSecond &&
-                    customActionSecond(data._id, data.StatusWO)}
+                  {customAction && customAction(data._id, data.StatusPengerjaan, data.StatusWO)}
                   {editUrl && (
                     <Button
                       variant="success"
@@ -60,6 +63,7 @@ function TbodyWithAction({
                       variant="secondary"
                       size={"sm"}
                       action={() => navigate(`${confirmationUrl}/${data._id}`)}
+                      disabled={isConfirmationDisabled}
                     >
                       Confirmation
                     </Button>
@@ -70,6 +74,7 @@ function TbodyWithAction({
                       size={"sm"}
                       className={"ms-2"}
                       action={() => navigate(`${Detail}/${data._id}`)}
+                      disabled={isDetailDisabled}
                     >
                       Detail
                     </Button>

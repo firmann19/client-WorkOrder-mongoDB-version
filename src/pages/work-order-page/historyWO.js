@@ -115,7 +115,7 @@ function HistoryWO() {
               <div className="button-group d-flex flex-column mx-auto mt-3">
                 <SButton
                   loading={isLoading}
-                  disabled={isLoading}
+                  disabled={isLoading || typeof form.Tindakan !== 'undefined' || typeof form.GantiSparepart !== 'undefined'}
                   variant="primary"
                   className="btn btn-sign-in fw-medium text-lg bg-danger text-white rounded-5 "
                   action={handleSubmit}

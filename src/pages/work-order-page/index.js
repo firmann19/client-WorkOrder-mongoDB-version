@@ -40,13 +40,7 @@ function WorkOrderPage() {
         };
         const res = await putData(`/checkout/${id}/statuspengerjaan`, payload);
         if (res?.data?.data) {
-          dispatch(
-            setNotif(
-              true,
-              "success",
-              `berhasil ubah status WorkOrder`
-            )
-          );
+          dispatch(setNotif(true, "success", `berhasil ubah status WorkOrder`));
           dispatch(fetchCheckouts());
         }
       }
@@ -102,13 +96,19 @@ function WorkOrderPage() {
           ]}
           confirmationUrl={`/work-order-page/confirmation-wo`}
           Detail={`/work-order-page/history-wo`}
-          customAction={(id, status = "") => {
+          customAction={(id, StatusPengerjaan = "", StatusWO) => {
+            const isDisabled =
+              StatusPengerjaan === "Close" ||
+              StatusPengerjaan === "OnProgress" ||
+              StatusWO !== "Approve";
+
             return (
               <Button
                 className={"mx-2"}
                 variant="primary"
                 size={"sm"}
-                action={() => handleChangeStatus(id, status)}
+                action={() => handleChangeStatus(id, StatusPengerjaan)}
+                disabled={isDisabled}
               >
                 Change Status
               </Button>

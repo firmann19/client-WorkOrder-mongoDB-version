@@ -13,7 +13,8 @@ export function userLogin(
   getAllGroup,
   getAllOnProgress,
   getAllClose,
-  getAllPending
+  getAllPending,
+  image
 ) {
   return {
     type: USER_LOGIN,
@@ -29,7 +30,8 @@ export function userLogin(
     getAllGroup,
     getAllOnProgress,
     getAllClose,
-    getAllPending
+    getAllPending,
+    image,
   };
 }
 

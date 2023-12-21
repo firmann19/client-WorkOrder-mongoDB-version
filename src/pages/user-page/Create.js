@@ -20,6 +20,7 @@ const CreateUser = () => {
   const dispatch = useDispatch();
   const lists = useSelector((state) => state.lists);
   const [form, setForm] = useState({
+    avatar: "",
     nama: "",
     email: "",
     password: "",
@@ -37,6 +38,13 @@ const CreateUser = () => {
 
   const [isLoading, setIsLoading] = useState(false);
 
+  const uploadImage = async (file) => {
+    let formData = new FormData();
+    formData.append("avatar", file);
+    const res = await postData("/images", formData, true);
+    return res;
+  };
+
   useEffect(() => {
     dispatch(fetchListsDepartement());
     dispatch(fetchListsGroup());
@@ -45,7 +53,49 @@ const CreateUser = () => {
   }, [dispatch]);
 
   const handleChange = async (e) => {
-    if (
+    if (e.target.name === "avatar") {
+      if (
+        e?.target?.files[0]?.type === "image/jpg" ||
+        e?.target?.files[0]?.type === "image/png" ||
+        e?.target?.files[0]?.type === "image/jpeg"
+      ) {
+        var size = parseFloat(e.target.files[0].size / 3145728).toFixed(2);
+
+        if (size > 2) {
+          setAlert({
+            ...alert,
+            status: true,
+            type: "danger",
+            message: "Please select image size less than 3 MB",
+          });
+          setForm({
+            ...form,
+            file: "",
+            [e.target.name]: "",
+          });
+        } else {
+          const res = await uploadImage(e.target.files[0]);
+
+          setForm({
+            ...form,
+            file: res.data.data._id,
+            [e.target.name]: res.data.data.name,
+          });
+        }
+      } else {
+        setAlert({
+          ...alert,
+          status: true,
+          type: "danger",
+          message: "type image png | jpg | jpeg",
+        });
+        setForm({
+          ...form,
+          file: "",
+          [e.target.name]: "",
+        });
+      }
+    } else if (
       e.target.name === "departement" ||
       e.target.name === "group" ||
       e.target.name === "posisi" ||
@@ -54,7 +104,6 @@ const CreateUser = () => {
       setForm({ ...form, [e.target.name]: e });
     } else {
       setForm({ ...form, [e.target.name]: e.target.value });
-      console.log(e.target.value);
     }
   };
 
@@ -62,6 +111,7 @@ const CreateUser = () => {
     setIsLoading(true);
 
     const payload = {
+      image: form.file,
       nama: form.nama,
       email: form.email,
       password: form.password,
@@ -95,7 +145,7 @@ const CreateUser = () => {
       <Container md={12}>
         <BreadCrumb
           textSecound={"User"}
-          urlSecound={"/register-page"}
+          urlSecound={"/user-page"}
           textThird="Create"
         />
         <div className="m-auto" style={{ width: "60%" }}>

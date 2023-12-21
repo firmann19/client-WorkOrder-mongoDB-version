@@ -66,7 +66,7 @@ function CardDashboard() {
             </div>
             <div className="justify-content-center d-flex">
               <div className=" text-center mb-2">
-                <Link to='/register-page' class="text-white text-decoration-none">
+                <Link to='/user-page' class="text-white text-decoration-none">
                   More info <i class="fas fa-arrow-circle-right"></i>
                 </Link>
                 <BsFillArrowRightCircleFill />

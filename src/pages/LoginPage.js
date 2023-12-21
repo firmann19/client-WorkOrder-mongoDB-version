@@ -48,7 +48,8 @@ function LoginPage() {
           res.data.data.getAllGroup,
           res.data.data.getAllOnProgress,
           res.data.data.getAllClose,
-          res.data.data.getAllPending
+          res.data.data.getAllPending,
+          res.data.data.image
         )
       );
 

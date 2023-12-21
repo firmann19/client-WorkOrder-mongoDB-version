@@ -6,15 +6,17 @@ import { NavLink } from "react-router-dom";
 function Navbar() {
   const [user, setUser] = useState(null);
   const [role, setRole] = useState(null);
+  const [image, setImage] = useState(null);
 
   useEffect(() => {
     const fetchData = () => {
-      let { user, role } = localStorage.getItem("auth")
+      let { user, role, image } = localStorage.getItem("auth")
         ? JSON.parse(localStorage.getItem("auth"))
         : {};
 
       setUser(user);
       setRole(role);
+      setImage(image);
     };
     fetchData();
   }, []);
@@ -100,7 +102,7 @@ function Navbar() {
                     aria-expanded="false"
                   >
                     <img
-                      src={Logo}
+                      src={`http://localhost:5000/${image}`}
                       className="rounded-circle"
                       width="40"
                       height="40"

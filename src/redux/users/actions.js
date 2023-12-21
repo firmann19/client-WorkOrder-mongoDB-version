@@ -43,6 +43,7 @@ export const fetchUsers = () => {
       let res = await debouncedFetchUsers("/user");
 
       res.data.data.forEach((res) => {
+        res.avatar = res.image.name;
         res.namaUser = res.nama;
         res.emailUser = res.email;
         res.posisiUser = res.posisi.jabatan;

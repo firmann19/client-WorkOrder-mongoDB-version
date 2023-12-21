@@ -16,6 +16,7 @@ let initialState = localStorage.getItem("auth")
       getAllOnProgress: null,
       getAllClose: null,
       getAllPending: null,
+      image: null
     };
 
 export default function reducer(state = initialState, action) {
@@ -35,6 +36,7 @@ export default function reducer(state = initialState, action) {
         getAllOnProgress: action.getAllOnProgress,
         getAllClose: action.getAllClose,
         getAllPending: action.getAllPending,
+        image: action.image
       };
 
     case USER_LOGOUT:
@@ -48,6 +50,7 @@ export default function reducer(state = initialState, action) {
         getAllOnProgress: null,
         getAllClose: null,
         getAllPending: null,
+        image: null
       };
 
     default:

@@ -144,7 +144,7 @@ function EditUser() {
       <Container md={12}>
         <BreadCrumb
           textSecound={"User"}
-          urlSecound={"/register-page"}
+          urlSecound={"/user-page"}
           textThird="Edit"
         />
         <div className="m-auto" style={{ width: "60%" }}>

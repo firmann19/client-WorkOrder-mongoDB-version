@@ -33,6 +33,8 @@ function HistoryWO() {
     StatusPengerjaan: "",
   });
 
+  const [isCloseDisabled, setIsCloseDisabled] = useState(false);
+
   const [isLoading, setIsLoading] = useState(false);
 
   const [alert, setAlert] = useState({
@@ -62,12 +64,14 @@ function HistoryWO() {
       Date_CompletionWO: moment(res.data.data.Date_CompletionWO).format(
         "DD-MM-YYYY, h:mm:ss a"
       ),
+      StatusPengerjaan: res.data.data.StatusPengerjaan,
     });
   };
 
   useEffect(() => {
+    setIsCloseDisabled(form.StatusPengerjaan === "Close");
     fetchOneWO();
-  }, []);
+  }, [form.StatusPengerjaan]);
 
   const handleSubmit = async () => {
     setIsLoading(true);
@@ -115,7 +119,7 @@ function HistoryWO() {
               <div className="button-group d-flex flex-column mx-auto mt-3">
                 <SButton
                   loading={isLoading}
-                  disabled={isLoading || typeof form.Tindakan !== 'undefined' || typeof form.GantiSparepart !== 'undefined'}
+                  disabled={isLoading || isCloseDisabled}
                   variant="primary"
                   className="btn btn-sign-in fw-medium text-lg bg-danger text-white rounded-5 "
                   action={handleSubmit}
@@ -137,9 +141,6 @@ function HistoryWO() {
           </div>
         </div>
       </section>
-
-      {/* <Container md={12}>        
-  </Container> */}
     </>
   );
 }

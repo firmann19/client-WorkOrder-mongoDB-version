@@ -14,6 +14,7 @@ import { Card, Container } from "react-bootstrap";
 import SAlert from "../../components/partikel/Alert";
 import Navbar from "../../components/navbar";
 import { setNotif } from "../../redux/notif/actions";
+import Footer from "../../components/Footer";
 
 const CreateUser = () => {
   const navigate = useNavigate();
@@ -124,7 +125,7 @@ const CreateUser = () => {
     const res = await postData(`/auth/register`, payload);
     if (res?.data?.data) {
       dispatch(
-        setNotif(true, "success", `berhasil tambah user ${res.data.data.name}`)
+        setNotif(true, "success", `berhasil tambah user ${res.data.data.nama}`)
       );
       navigate("/user-page");
       setIsLoading(false);
@@ -142,7 +143,7 @@ const CreateUser = () => {
   return (
     <>
       <Navbar />
-      <Container md={12}>
+      <Container md={12} style={{ height: "120vh" }}>
         <BreadCrumb
           textSecound={"User"}
           urlSecound={"/user-page"}
@@ -165,6 +166,7 @@ const CreateUser = () => {
           </Card.Body>
         </Card>
       </Container>
+      <Footer />
     </>
   );
 };

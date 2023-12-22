@@ -12,6 +12,7 @@ import { deleteData } from "../../utils/fetch";
 import { fetchGroups } from "../../redux/groups/actions";
 import Navbar from "../../components/navbar";
 import { setNotif } from "../../redux/notif/actions";
+import Footer from "../../components/Footer";
 
 function GroupPage() {
   const navigate = useNavigate();
@@ -54,7 +55,7 @@ function GroupPage() {
   return (
     <>
     <Navbar />
-    <Container className="mt-3">
+    <Container className="mt-3" style={{ height: "80vh" }}>
       <Button action={() => navigate("/group-page/create-group")} >Tambah</Button>
       <BreadCrumb textSecound={"Group"} />
       <Row>
@@ -76,6 +77,7 @@ function GroupPage() {
         deleteAction={(id) => handleDelete(id)}
       />
     </Container>
+    <Footer />
     </>
   );
 }

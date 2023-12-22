@@ -12,11 +12,12 @@ import { deleteData } from "../../utils/fetch";
 import { fetchDepartements } from "../../redux/departements/actions";
 import Navbar from "../../components/navbar";
 import { setNotif } from "../../redux/notif/actions";
+import Footer from "../../components/Footer";
 
 function DepartementPage() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  
+
   const notif = useSelector((state) => state.notif);
   const departements = useSelector((state) => state.departements);
 
@@ -37,47 +38,48 @@ function DepartementPage() {
     }).then(async (result) => {
       if (result.isConfirmed) {
         const res = await deleteData(`/departement/${id}`);
-        if(res?.data?.data){
-        dispatch(
-          setNotif(
-            true,
-            "success",
-            `berhasil hapus departement ${res.data.data.namaDepartement}`
-          )
-        );
-        dispatch(fetchDepartements());
-       }
+        if (res?.data?.data) {
+          dispatch(
+            setNotif(
+              true,
+              "success",
+              `berhasil hapus departement ${res.data.data.namaDepartement}`
+            )
+          );
+          dispatch(fetchDepartements());
+        }
       }
     });
   };
 
   return (
     <>
-    <Navbar />
-    <Container className="mt-3">
-      <Button action={() => navigate("/departement-page/create-departement")}>
-        Tambah
-      </Button>
-      <BreadCrumb textSecound={"Departement"} />
-      <Row>
-        <Col md="4">
-          <SearchInput />
-        </Col>
-      </Row>
+      <Navbar />
+      <Container className="mt-3" style={{ height: "80vh" }}>
+        <Button action={() => navigate("/departement-page/create-departement")}>
+          Tambah
+        </Button>
+        <BreadCrumb textSecound={"Departement"} />
+        <Row>
+          <Col md="4">
+            <SearchInput />
+          </Col>
+        </Row>
 
-      {notif.status && (
-        <SAlert type={notif.typeNotif} message={notif.message} />
-      )}
+        {notif.status && (
+          <SAlert type={notif.typeNotif} message={notif.message} />
+        )}
 
-      <Table
-        status={departements.status}
-        thead={["Departement", "Aksi"]}
-        data={departements.data}
-        tbody={["namaDepartement", "Aksi"]}
-        editUrl={`/departement-page/edit-departement`}
-        deleteAction={(id) => handleDelete(id)}
-      />
-    </Container>
+        <Table
+          status={departements.status}
+          thead={["Departement", "Aksi"]}
+          data={departements.data}
+          tbody={["namaDepartement", "Aksi"]}
+          editUrl={`/departement-page/edit-departement`}
+          deleteAction={(id) => handleDelete(id)}
+        />
+      </Container>
+      <Footer />
     </>
   );
 }

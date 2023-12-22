@@ -9,6 +9,7 @@ import { postData } from "../../utils/fetch";
 import { useEffect } from "react";
 import { setNotif } from "../../redux/notif/actions";
 import { useDispatch } from "react-redux";
+import Footer from "../../components/Footer";
 
 function CreateChangeSparepart() {
   const navigate = useNavigate();
@@ -85,7 +86,7 @@ function CreateChangeSparepart() {
   return (
     <>
       <Navbar />
-      <Container md={12}>
+      <Container md={12} style={{ height: "80vh" }}>
         <BreadCrumb
           textSecound={"Work Order"}
           urlSecound={"/work-order-page"}
@@ -109,6 +110,7 @@ function CreateChangeSparepart() {
           </Card.Body>
         </Card>
       </Container>
+      <Footer />
     </>
   );
 }

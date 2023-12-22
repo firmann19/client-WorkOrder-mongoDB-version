@@ -21,6 +21,7 @@ import {
   setGroup,
 } from "../../redux/users/actions";
 import Navbar from "../../components/navbar";
+import Footer from "../../components/Footer";
 
 function UserPage() {
   const navigate = useNavigate();
@@ -63,7 +64,7 @@ function UserPage() {
   return (
     <>
       <Navbar />
-      <Container className="mt-3">
+      <Container className="mt-3" style={{ height: "80vh" }}>
         <Button action={() => navigate("/user-page/create-user")}>
           Tambah
         </Button>
@@ -121,6 +122,7 @@ function UserPage() {
           deleteAction={(id) => handleDelete(id)}
         />
       </Container>
+      <Footer />
     </>
   );
 }

@@ -1,12 +1,36 @@
 import React from "react";
 import SButton from "../partikel/Button";
 import SelectBox from "../partikel/selectBox";
-import { Col, Form, Row } from "react-bootstrap";
+import { Col, Figure, Form, Row } from "react-bootstrap";
 import TextInputWithLabel from "../partikel/TextInputWithLabel";
+import { config } from "../../configs";
 
 function EditUserInput({ form, lists, handleChange, handleSubmit, isLoading }) {
   return (
     <Form method="post" className="form-register">
+      <TextInputWithLabel
+        placeholder={"Masukan Avatar..."}
+        label={"Avatar"}
+        name="avatar"
+        //value={form?.nama}
+        type="file"
+        onChange={handleChange}
+      />
+      {form.avatar !== "" && (
+        <div>
+          <Figure>
+            <Figure.Image
+              width={171}
+              height={180}
+              alt="171x180"
+              src={`${config.api_image}/${form.avatar}`}
+            />
+
+            <Figure.Caption>Perview image avatar</Figure.Caption>
+          </Figure>
+        </div>
+      )}
+
       <TextInputWithLabel
         placeholder={"Masukan nama..."}
         label={"Nama"}

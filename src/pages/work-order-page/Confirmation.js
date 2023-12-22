@@ -11,6 +11,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Navbar from "../../components/navbar";
 import { setNotif } from "../../redux/notif/actions";
+import Footer from "../../components/Footer";
 
 function ConfirmationWO() {
   const navigate = useNavigate();
@@ -138,6 +139,7 @@ function ConfirmationWO() {
           </Card.Body>
         </Card>
       </Container>
+      <Footer />
     </>
   );
 }

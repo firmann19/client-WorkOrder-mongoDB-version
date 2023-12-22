@@ -12,6 +12,7 @@ import Swal from "sweetalert2";
 import { putData } from "../../utils/fetch";
 import { setNotif } from "../../redux/notif/actions";
 import Navbar from "../../components/navbar";
+import Footer from "../../components/Footer";
 
 function WorkOrderPage() {
   const dispatch = useDispatch();
@@ -50,7 +51,7 @@ function WorkOrderPage() {
   return (
     <>
       <Navbar />
-      <Container className="mt-3">
+      <Container className="mt-3" style={{ height: "80vh" }}>
         <BreadCrumb textSecound={"Work Order"} />
         <Row>
           <Col>
@@ -116,6 +117,7 @@ function WorkOrderPage() {
           }}
         />
       </Container>
+      <Footer />
     </>
   );
 }

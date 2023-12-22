@@ -9,6 +9,7 @@ import DepartementInput from "../../components/Departement-Input/DepartementInpu
 import Navbar from "../../components/navbar";
 import { setNotif } from "../../redux/notif/actions";
 import { useDispatch } from "react-redux";
+import Footer from "../../components/Footer";
 
 function EditDepartement() {
   const navigate = useNavigate();
@@ -75,7 +76,7 @@ function EditDepartement() {
   return (
     <>
       <Navbar />
-      <Container md={12}>
+      <Container md={12} style={{ height: "80vh" }}>
         <BreadCrumb
           textSecound={"Departement"}
           urlSecound={"/departement-page"}
@@ -97,6 +98,7 @@ function EditDepartement() {
           </Card.Body>
         </Card>
       </Container>
+      <Footer />
     </>
   );
 }

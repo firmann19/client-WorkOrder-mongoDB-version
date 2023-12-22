@@ -8,6 +8,7 @@ import SAlert from "../../components/partikel/Alert";
 import DepartementInput from "../../components/Departement-Input/DepartementInput";
 import Navbar from "../../components/navbar";
 import { setNotif } from "../../redux/notif/actions";
+import Footer from "../../components/Footer";
 
 function CreateDepartement() {
   const navigate = useNavigate();
@@ -59,7 +60,7 @@ function CreateDepartement() {
   return (
     <>
       <Navbar />
-      <Container md={12}>
+      <Container md={12} style={{ height: "80vh" }}>
         <BreadCrumb
           textSecound={"Departement"}
           urlSecound={"/departement-page"}
@@ -81,6 +82,7 @@ function CreateDepartement() {
           </Card.Body>
         </Card>
       </Container>
+      <Footer />
     </>
   );
 }

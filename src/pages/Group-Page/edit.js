@@ -9,6 +9,7 @@ import GroupInput from "../../components/Group-Input/GroupInput";
 import Navbar from "../../components/navbar";
 import { setNotif } from "../../redux/notif/actions";
 import { useDispatch } from "react-redux";
+import Footer from "../../components/Footer";
 
 function EditGroup() {
   const navigate = useNavigate();
@@ -69,7 +70,7 @@ function EditGroup() {
   return (
     <>
       <Navbar />
-      <Container md={12}>
+      <Container md={12} style={{ height: "80vh" }}>
         <BreadCrumb
           textSecound={"Group"}
           urlSecound={"/group-page"}
@@ -91,6 +92,7 @@ function EditGroup() {
           </Card.Body>
         </Card>
       </Container>
+      <Footer />
     </>
   );
 }

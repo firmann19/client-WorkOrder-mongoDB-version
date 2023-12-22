@@ -8,6 +8,7 @@ import { getData } from "../../utils/fetch";
 import { useEffect } from "react";
 import Navbar from "../../components/navbar";
 import HistoryChangeInput from "../../components/HistoryChangeSparepart-input";
+import Footer from "../../components/Footer";
 
 function HistoryChangeSparepart() {
   const { id } = useParams();
@@ -51,7 +52,7 @@ function HistoryChangeSparepart() {
   return (
     <>
       <Navbar />
-      <Container md={12}>
+      <Container md={12} style={{ height: "80vh" }}>
         <BreadCrumb
           textSecound={"Change Sparepart"}
           urlSecound={"/changeSparepart-page"}
@@ -65,6 +66,7 @@ function HistoryChangeSparepart() {
           </Card.Body>
         </Card>
       </Container>
+      <Footer />
     </>
   );
 }

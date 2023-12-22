@@ -1,0 +1,14 @@
+.footer {
+    padding-top: 23px;
+    padding-bottom: 23px;
+    background-color: #F9FAFF;
+}
+
+.text-footer {
+    color: #0C145A;
+    text-align: center;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 32px;
+}

@@ -11,6 +11,7 @@ import { putData } from "../../utils/fetch";
 import { setNotif } from "../../redux/notif/actions";
 import Navbar from "../../components/navbar";
 import { fetchPengajuan } from "../../redux/pengajuan/actions";
+import Footer from "../../components/Footer";
 
 function ChangeSparepartPage() {
   const dispatch = useDispatch();
@@ -92,7 +93,7 @@ function ChangeSparepartPage() {
   return (
     <>
       <Navbar />
-      <Container className="mt-3">
+      <Container className="mt-3" style={{ height: "80vh" }}>
         <BreadCrumb textSecound={"Change Sparepart"} />
         <Row>
           <Col md="4">
@@ -142,6 +143,7 @@ function ChangeSparepartPage() {
           Detail={`/changeSparepart-page/historyChangeSparepart-page`}
         />
       </Container>
+      <Footer />
     </>
   );
 }

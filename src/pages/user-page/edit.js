@@ -8,13 +8,14 @@ import {
   fetchListsPosisi,
   fetchListsRoles,
 } from "../../redux/lists/actions";
-import { getData, putData } from "../../utils/fetch";
+import { getData, postData, putData } from "../../utils/fetch";
 import { Card, Container } from "react-bootstrap";
 import SAlert from "../../components/partikel/Alert";
 import BreadCrumb from "../../components/partikel/Breadcrumb";
 import EditUserInput from "../../components/EditUser-Input/EditUserInput";
 import Navbar from "../../components/navbar";
 import { setNotif } from "../../redux/notif/actions";
+import Footer from "../../components/Footer";
 
 function EditUser() {
   const navigate = useNavigate();
@@ -22,6 +23,7 @@ function EditUser() {
   const { id } = useParams();
   const lists = useSelector((state) => state.lists);
   const [form, setForm] = useState({
+    avatar: "",
     nama: "",
     email: "",
     password: "",
@@ -39,11 +41,19 @@ function EditUser() {
 
   const [isLoading, setIsLoading] = useState(false);
 
+  const uploadImage = async (file) => {
+    let formData = new FormData();
+    formData.append("avatar", file);
+    const res = await postData("/images", formData, true);
+    return res;
+  };
+
   const fetchOneUsers = async () => {
     const res = await getData(`/user/${id}`);
 
     setForm({
       ...form,
+      avatar: res.data.data.image.name,
       nama: res.data.data.nama,
       email: res.data.data.email,
       departement: {
@@ -93,15 +103,55 @@ function EditUser() {
   }, [dispatch]);
 
   const handleChange = async (e) => {
-    if (
+    if (e.target.name === "avatar") {
+      if (
+        e?.target?.files[0]?.type === "image/jpg" ||
+        e?.target?.files[0]?.type === "image/png" ||
+        e?.target?.files[0]?.type === "image/jpeg"
+      ) {
+        var size = parseFloat(e.target.files[0].size / 3145728).toFixed(2);
+
+        if (size > 2) {
+          setAlert({
+            ...alert,
+            status: true,
+            type: "danger",
+            message: "Please select image size less than 3 MB",
+          });
+          setForm({
+            ...form,
+            file: "",
+            [e.target.name]: "",
+          });
+        } else {
+          const res = await uploadImage(e.target.files[0]);
+
+          setForm({
+            ...form,
+            file: res.data.data._id,
+            [e.target.name]: res.data.data.name,
+          });
+        }
+      } else {
+        setAlert({
+          ...alert,
+          status: true,
+          type: "danger",
+          message: "type image png | jpg | jpeg",
+        });
+        setForm({
+          ...form,
+          file: "",
+          [e.target.name]: "",
+        });
+      }
+    } else if (
       e.target.name === "departement" ||
       e.target.name === "group" ||
       e.target.name === "posisi" ||
       e.target.name === "role"
     ) {
       setForm({ ...form, [e.target.name]: e });
-      console.log("e.target.name");
-      console.log(e.target.name);
     } else {
       setForm({ ...form, [e.target.name]: e.target.value });
     }
@@ -111,6 +161,7 @@ function EditUser() {
     setIsLoading(true);
 
     const payload = {
+      image: form.file,
       nama: form.nama,
       email: form.email,
       password: form.password,
@@ -141,7 +192,7 @@ function EditUser() {
   return (
     <>
       <Navbar />
-      <Container md={12}>
+      <Container md={12} style={{ height: "120vh" }}>
         <BreadCrumb
           textSecound={"User"}
           urlSecound={"/user-page"}
@@ -164,6 +215,7 @@ function EditUser() {
           </Card.Body>
         </Card>
       </Container>
+      <Footer />
     </>
   );
 }

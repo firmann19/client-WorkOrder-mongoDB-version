@@ -14,27 +14,16 @@
     vertical-align: top;
 }
 
-.card-performance .status-wo-performance {
+.card-performance .container {
     display: flex;
-    width: 296px;
-    padding: 4px 6px;
-    justify-content: center;
-    align-items: flex-start; /* Changed align-items to flex-start */
-    gap: 50px;
-    text-align: left; /* Changed text-align to left */
-    font-size: 15px;
-    font-weight: 400;
-}
+    justify-content: space-between;
+  }
 
-.card-performance .status-wo-performance > div {
-    text-align: center; /* Keep text in the center for each inner div */
-}
-
-.card-performance .text-info {
-    font-size: 15px;
-    font-weight: 400;
-}
-
+.card-performance .column {
+    flex-basis: 100%;
+    text-align: center;
+    padding: 8px;
+  }
 
 .card-performance .IT-performance {
     display: flex;

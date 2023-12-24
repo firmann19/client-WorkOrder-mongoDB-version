@@ -4,6 +4,7 @@ import {
   ERROR_FETCHING_USERS,
   SET_DEPARTEMENT,
   SET_GROUP,
+  SET_KEYWORD,
 } from "./constants";
 
 const statuslist = {
@@ -15,6 +16,7 @@ const statuslist = {
 
 const initialState = {
   data: [],
+  keyword: "",
   status: statuslist.idle,
 };
 
@@ -43,6 +45,12 @@ export default function reducer(state = initialState, action) {
         ...state,
         group: action.group,
       };
+
+      case SET_KEYWORD:
+        return {
+          ...state,
+          keyword: action.keyword,
+        };
 
     default:
       return state;

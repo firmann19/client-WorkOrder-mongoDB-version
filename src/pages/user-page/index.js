@@ -19,6 +19,7 @@ import {
   fetchUsers,
   setDepartement,
   setGroup,
+  setKeyword,
 } from "../../redux/users/actions";
 import Navbar from "../../components/navbar";
 import Footer from "../../components/Footer";
@@ -33,7 +34,7 @@ function UserPage() {
 
   useEffect(() => {
     dispatch(fetchUsers());
-  }, [dispatch]);
+  }, [dispatch, user.keyword, user.departement, user.group]);
 
   useEffect(() => {
     dispatch(fetchListsDepartement());
@@ -71,13 +72,16 @@ function UserPage() {
         <BreadCrumb textSecound={"User"} />
         <Row>
           <Col>
-            <SearchInput />
+            <SearchInput
+              query={user.keyword}
+              handleChange={(e) => dispatch(setKeyword(e.target.value))}
+            />
           </Col>
           <Col>
             <SelectBox
               placeholder={"Masukan pencarian Departement"}
               name="category"
-              value={user.DepartementId}
+              value={user.departement}
               options={lists.departements}
               handleChange={(e) => dispatch(setDepartement(e))}
             />
@@ -86,7 +90,7 @@ function UserPage() {
             <SelectBox
               placeholder={"Masukan pencarian Group"}
               name="category"
-              value={user.GroupId}
+              value={user.group}
               options={lists.groups}
               handleChange={(e) => dispatch(setGroup(e))}
             />

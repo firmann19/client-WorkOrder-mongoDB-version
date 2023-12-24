@@ -4,6 +4,7 @@ import {
   ERROR_FETCHING_USERS,
   SET_DEPARTEMENT,
   SET_GROUP,
+  SET_KEYWORD,
 } from "./constants";
 
 import { getData } from "../../utils/fetch";
@@ -32,7 +33,7 @@ export const errorFetchingUsers = () => {
 };
 
 export const fetchUsers = () => {
-  return async (dispatch) => {
+  return async (dispatch, getState) => {
     dispatch(startFetchingUsers());
 
     try {
@@ -40,7 +41,13 @@ export const fetchUsers = () => {
         dispatch(clearNotif());
       }, 5000);
 
-      let res = await debouncedFetchUsers("/user");
+      let params = {
+        keyword: getState().user.keyword,
+        departement: getState().user?.departement?.value || "",
+        group: getState().user?.group?.value || "",
+      };
+
+      let res = await debouncedFetchUsers("/user", params);
 
       res.data.data.forEach((res) => {
         res.avatar = res.image.name;
@@ -74,5 +81,12 @@ export const setGroup = (group) => {
   return {
     type: SET_GROUP,
     group,
+  };
+};
+
+export const setKeyword = (keyword) => {
+  return {
+    type: SET_KEYWORD,
+    keyword,
   };
 };

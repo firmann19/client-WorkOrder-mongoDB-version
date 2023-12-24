@@ -9,7 +9,10 @@ import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteData } from "../../utils/fetch";
-import { fetchDepartements } from "../../redux/departements/actions";
+import {
+  fetchDepartements,
+  setKeyword,
+} from "../../redux/departements/actions";
 import Navbar from "../../components/navbar";
 import { setNotif } from "../../redux/notif/actions";
 import Footer from "../../components/Footer";
@@ -23,7 +26,7 @@ function DepartementPage() {
 
   useEffect(() => {
     dispatch(fetchDepartements());
-  }, [dispatch]);
+  }, [dispatch, departements.keyword]);
 
   const handleDelete = (id) => {
     Swal.fire({
@@ -62,7 +65,10 @@ function DepartementPage() {
         <BreadCrumb textSecound={"Departement"} />
         <Row>
           <Col md="4">
-            <SearchInput />
+            <SearchInput
+              query={departements.keyword}
+              handleChange={(e) => dispatch(setKeyword(e.target.value))}
+            />
           </Col>
         </Row>
 

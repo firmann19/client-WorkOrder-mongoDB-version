@@ -24,7 +24,7 @@ const handleError = (error) => {
         return axios(originalRequest);
       })
       .catch((err) => {
-        window.location.href = "/login-page";
+        window.location.href = "/";
         localStorage.removeItem("auth");
       });
   }

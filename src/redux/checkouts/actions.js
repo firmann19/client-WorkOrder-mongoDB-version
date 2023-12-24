@@ -3,6 +3,8 @@ import debounce from "debounce-promise";
 import { clearNotif } from "../notif/actions";
 import {
   ERROR_FETCHING_CHECKOUTS,
+  SET_DEPARTEMENT,
+  SET_KEYWORD,
   START_FETCHING_CHECKOUTS,
   SUCCESS_FETCHING_CHECKOUTS,
 } from "./constants";
@@ -38,28 +40,46 @@ export const fetchCheckouts = () => {
         dispatch(clearNotif());
       }, 5000);
 
-      let res = await debouncedFetchCheckouts("/checkout", /*params*/);
-      console.log("test", res)
+      let params = {
+        keyword: getState().checkouts.keyword,
+        Departement: getState().checkouts?.Departement?.value || "",
+      };
+
+      let res = await debouncedFetchCheckouts("/checkout", params);
 
       res.data.data.forEach((res) => {
         res.UserRequestName = res.UserRequest.nama;
         res.DepartementName = res.Departement.namaDepartement;
-        res.NamaPeralatan = res.NamaBarang;  
+        res.NamaPeralatan = res.NamaBarang;
         res.KodePeralatan = res.KodeBarang;
         res.Status_WO = res.StatusWO;
-        res.DateRequestWO = moment(res.Date_RequestWO).format("DD-MM-YYYY, h:mm:ss a");
-        res.Status_Pengerjaan = res.StatusPengerjaan;    
+        res.DateRequestWO = moment(res.Date_RequestWO).format(
+          "DD-MM-YYYY, h:mm:ss a"
+        );
+        res.Status_Pengerjaan = res.StatusPengerjaan;
       });
 
       dispatch(
         successFetchingCheckouts({
-          checkouts: res.data.data
-          //checkouts: _temp,
-          //pages: res.data.data.pages,
+          checkouts: res.data.data,
         })
       );
     } catch (error) {
       dispatch(errorFetchingCheckouts());
     }
+  };
+};
+
+export const setKeyword = (keyword) => {
+  return {
+    type: SET_KEYWORD,
+    keyword,
+  };
+};
+
+export const setDepartement = (Departement) => {
+  return {
+    type: SET_DEPARTEMENT,
+    Departement,
   };
 };

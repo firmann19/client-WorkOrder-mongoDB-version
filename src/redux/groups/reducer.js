@@ -1,5 +1,6 @@
 import {
   ERROR_FETCHING_GROUPS,
+  SET_KEYWORD,
   START_FETCHING_GROUPS,
   SUCCESS_FETCHING_GROUPS,
 } from "./constants";
@@ -13,6 +14,7 @@ const statuslist = {
 
 const initialState = {
   data: [],
+  keyword: "",
   status: statuslist.idle,
 };
 
@@ -30,6 +32,13 @@ export default function reducer(state = initialState, action) {
         status: statuslist.success,
         data: action.groups,
       };
+
+      case SET_KEYWORD:
+        return {
+          ...state,
+          keyword: action.keyword,
+        };
+        
     default:
       return state;
   }

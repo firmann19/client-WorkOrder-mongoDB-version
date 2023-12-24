@@ -7,21 +7,27 @@ import Table from "../../components/partikel/TableWithAction";
 import SearchInput from "../../components/partikel/SearchInput";
 import SAlert from "../../components/partikel/Alert";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchCheckouts } from "../../redux/checkouts/actions";
+import { fetchCheckouts, setDepartement, setKeyword } from "../../redux/checkouts/actions";
 import Swal from "sweetalert2";
 import { putData } from "../../utils/fetch";
 import { setNotif } from "../../redux/notif/actions";
 import Navbar from "../../components/navbar";
 import Footer from "../../components/Footer";
+import { fetchListsDepartement } from "../../redux/lists/actions";
 
 function WorkOrderPage() {
   const dispatch = useDispatch();
 
   const notif = useSelector((state) => state.notif);
   const checkouts = useSelector((state) => state.checkouts);
+  const lists = useSelector((state) => state.lists);
 
   useEffect(() => {
     dispatch(fetchCheckouts());
+  }, [dispatch, checkouts.keyword, checkouts.Departement]);
+
+  useEffect(() => {
+    dispatch(fetchListsDepartement());
   }, [dispatch]);
 
   const handleChangeStatus = (id, status) => {
@@ -55,15 +61,19 @@ function WorkOrderPage() {
         <BreadCrumb textSecound={"Work Order"} />
         <Row>
           <Col>
-            <SearchInput />
+            <SearchInput
+              query={checkouts.keyword}
+              handleChange={(e) => dispatch(setKeyword(e.target.value))}
+            />
           </Col>
           <Col>
             <SelectBox
               placeholder={"Masukan pencarian Departement"}
               name="category"
-              value={""}
-              options={""}
-              handleChange={""}
+              value={checkouts.Departement}
+              options={lists.departements}
+              isClearable={true}
+              handleChange={(e) => dispatch(setDepartement(e))}
             />
           </Col>
         </Row>

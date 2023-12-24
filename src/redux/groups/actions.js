@@ -5,6 +5,7 @@ import {
   ERROR_FETCHING_GROUPS,
   START_FETCHING_GROUPS,
   SUCCESS_FETCHING_GROUPS,
+  SET_KEYWORD,
 } from "./constants";
 
 let debouncedFetchGroups = debounce(getData, 1000);
@@ -29,7 +30,7 @@ export const errorFetchingGroups = () => {
 };
 
 export const fetchGroups = () => {
-  return async (dispatch) => {
+  return async (dispatch, getState) => {
     dispatch(startFetchingGroups());
 
     try {
@@ -37,7 +38,11 @@ export const fetchGroups = () => {
         dispatch(clearNotif());
       }, 5000);
 
-      let res = await debouncedFetchGroups("/group");
+      let params = {
+        keyword: getState().groups.keyword,
+      };
+
+      let res = await debouncedFetchGroups("/group", params);
 
       dispatch(
         successFetchingGroups({
@@ -47,5 +52,12 @@ export const fetchGroups = () => {
     } catch (error) {
       dispatch(errorFetchingGroups());
     }
+  };
+};
+
+export const setKeyword = (keyword) => {
+  return {
+    type: SET_KEYWORD,
+    keyword,
   };
 };

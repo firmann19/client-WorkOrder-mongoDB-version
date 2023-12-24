@@ -43,57 +43,37 @@ function CardPerformance() {
             <div class="card-header header-wo-performance text-2xl fw-semibold color-palette-1">
               WorkOrder Performance
             </div>
-            <div class="card-body d-flex justify-content-around">
+            <div className="card-body d-flex justify-content-around">
               <div className="my-auto">
                 <Doughnut data={chartData} />
               </div>
-              <div class="card-text mt-3">
-                <div className="status-wo-performance">
-                  <div>
-                    <p
-                      className="value-wo-performance"
-                      style={{ color: "#3559E0" }}
-                    >
-                      {getAllPending}
-                    </p>
-                    <p>Pending</p>
+              <div className="card-text mt-3">
+                <div className="container">
+                  <div className="column text-lg" style={{ color: "#3559E0" }}>
+                    {getAllPending}
                   </div>
-
-                  <div>
-                    <p
-                      className="value-wo-performance"
-                      style={{ color: "#D8A900" }}
-                    >
-                      {getAllOnProgress}
-                    </p>
-                    <p>OnProgress</p>
+                  <div className="column text-lg" style={{ color: "#D8A900" }}>
+                    {getAllOnProgress}
                   </div>
-
-                  <div>
-                    <p
-                      className="value-wo-performance"
-                      style={{ color: "#08DB43" }}
-                    >
-                      {getAllClose}
-                    </p>
-                    <p>Close</p>
+                  <div className="column text-lg" style={{ color: "#08DB43" }}>
+                    {getAllClose}
                   </div>
-
-                  <div>
-                    <p
-                      className="value-wo-performance"
-                      style={{ color: "#DB1414" }}
-                    >
-                      {getAllWO}
-                    </p>
-                    <p>Total</p>
+                  <div className="column text-lg" style={{ color: "#DB1414" }}>
+                    {getAllWO}
                   </div>
                 </div>
-                <div className="text-info">
-                  <p style={{ color: "#0C145A" }}>
-                    Total WorkOrder is {getAllWO} of {getAllClose} close and{" "}
-                    {getAllOnProgress} OnProgress
-                  </p>
+
+                <div className="container">
+                  <div className="column text-lg">Pending</div>
+                  <div className="column text-lg">OnProgress</div>
+                  <div className="column text-lg">Close</div>
+                  <div className="column text-lg">Total</div>
+                </div>
+
+                <div className="container">
+                  <div className="column text-lg" colspan="4">
+                    Total WorkOrder is 2 of 0 close and 0 OnProgress
+                  </div>
                 </div>
               </div>
             </div>
@@ -105,7 +85,7 @@ function CardPerformance() {
             <div class="card-header header-wo-performance text-2xl fw-semibold color-palette-1">
               Staff IT Performance
             </div>
-            <div class="card-body d-flex" style={{gap: "450px"}}>
+            <div class="card-body d-flex" style={{ gap: "450px" }}>
               <div>
                 <div className="d-flex mt-3">
                   <p className="me-2 my-auto">1.</p>

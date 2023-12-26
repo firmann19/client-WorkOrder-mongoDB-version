@@ -37,7 +37,7 @@ function CardPerformance() {
   return (
     <div className="card-performance container-fluid">
       <div className="row">
-        <div className="col">
+        <div className="col-6">
           <div class="card card-wo-performance mt-5 ">
             <div class="card-header header-wo-performance text-2xl fw-semibold color-palette-1">
               WorkOrder Performance
@@ -71,7 +71,7 @@ function CardPerformance() {
 
                 <div className="container">
                   <div className="column text-lg" colspan="4">
-                    Total WorkOrder is 2 of 0 close and 0 OnProgress
+                    Total WorkOrder is {getAllWO} of {getAllClose} close and {getAllOnProgress} OnProgress
                   </div>
                 </div>
               </div>

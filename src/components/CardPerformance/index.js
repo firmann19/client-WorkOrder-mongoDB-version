@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { RiCheckboxBlankFill } from "react-icons/ri";
 import { Doughnut } from "react-chartjs-2";
 import { Chart, ArcElement } from "chart.js";
 Chart.register(ArcElement);
@@ -47,31 +48,34 @@ function CardPerformance() {
                 <Doughnut data={chartData} />
               </div>
               <div className="card-text mt-3">
-                <div className="container">
-                  <div className="column text-lg" style={{ color: "#3559E0" }}>
-                    {getAllPending}
+                <div>
+                  <div className="text-lg mt-1">
+                    <RiCheckboxBlankFill
+                      className="me-1"
+                      style={{ color: "#3559E0" }}
+                    />
+                    Pending: {getAllPending} WorkOrder
                   </div>
-                  <div className="column text-lg" style={{ color: "#D8A900" }}>
-                    {getAllOnProgress}
+                  <div className="text-lg mt-1">
+                    <RiCheckboxBlankFill
+                      className="me-1"
+                      style={{ color: "#D8A900" }}
+                    />
+                    OnProgress: {getAllOnProgress} WorkOrder
                   </div>
-                  <div className="column text-lg" style={{ color: "#08DB43" }}>
-                    {getAllClose}
+                  <div className="text-lg mt-1">
+                    <RiCheckboxBlankFill
+                      className="me-1"
+                      style={{ color: "#08DB43" }}
+                    />
+                    Close: {getAllClose} WorkOrder
                   </div>
-                  <div className="column text-lg" style={{ color: "#DB1414" }}>
-                    {getAllWO}
-                  </div>
-                </div>
-
-                <div className="container">
-                  <div className="column text-lg">Pending</div>
-                  <div className="column text-lg">OnProgress</div>
-                  <div className="column text-lg">Close</div>
-                  <div className="column text-lg">Total</div>
-                </div>
-
-                <div className="container">
-                  <div className="column text-lg" colspan="4">
-                    Total WorkOrder is {getAllWO} of {getAllClose} close and {getAllOnProgress} OnProgress
+                  <div className="text-lg mt-1">
+                    <RiCheckboxBlankFill
+                      className="me-1"
+                      style={{ color: "#DB1414" }}
+                    />
+                    Total: {getAllWO} WorkOrder
                   </div>
                 </div>
               </div>

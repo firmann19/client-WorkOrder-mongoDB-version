@@ -1,14 +1,11 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { getData, putData } from "../../utils/fetch";
 import ConfirmWOInput from "../../components/confirmWO-Input";
-import { Card, Container } from "react-bootstrap";
+import { Card, Container, Row, Col } from "react-bootstrap";
 import SAlert from "../../components/partikel/Alert";
 import BreadCrumb from "../../components/partikel/Breadcrumb";
-import { useNavigate, useParams } from "react-router-dom";
-import { useState } from "react";
-import { getData, putData } from "../../utils/fetch";
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import Navbar from "../../components/navbar";
 import { setNotif } from "../../redux/notif/actions";
 import Footer from "../../components/Footer";
@@ -16,12 +13,8 @@ import Footer from "../../components/Footer";
 function ConfirmationWO() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [user, setUser] = useState(null);
-  const [userId, setUserId] = useState(null);
-  const [getManager, setGetManager] = useState(null);
-  const [getNameManager, setGetNameManager] = useState(null);
-  const lists = useSelector((state) => state.lists);
   const { id } = useParams();
+  const lists = useSelector((state) => state.lists);
   const [form, setForm] = useState({
     UserRequest: "",
     Departement: "",
@@ -43,6 +36,10 @@ function ConfirmationWO() {
   });
 
   const [isLoading, setIsLoading] = useState(false);
+  const [user, setUser] = useState(null);
+  const [userId, setUserId] = useState(null);
+  const [getManager, setGetManager] = useState(null);
+  const [getNameManager, setGetNameManager] = useState(null);
 
   const fetchOneWO = async () => {
     const res = await getData(`/checkout/${id}`);
@@ -115,29 +112,36 @@ function ConfirmationWO() {
   return (
     <>
       <Navbar />
-      <Container md={12}>
+      <Container fluid className="confirmation-WorkOrder">
         <BreadCrumb
           textSecound={"Work Order"}
           urlSecound={"/work-order-page"}
           textThird="Edit"
         />
-        <div className="m-auto" style={{ width: "80%" }}>
-          {alert.status && <SAlert type={alert.type} message={alert.message} />}
-        </div>
-        <Card style={{ width: "80%" }} className="m-auto mt-5 mb-5">
-          <Card.Body>
-            <Card.Title className="text-center mb-5">Work Order</Card.Title>
-            <ConfirmWOInput
-              user={user}
-              getNameManager={getNameManager}
-              form={form}
-              isLoading={isLoading}
-              lists={lists}
-              handleChange={handleChange}
-              handleSubmit={handleSubmit}
-            />
-          </Card.Body>
-        </Card>
+        <Row className="justify-content-center">
+          <Col xs={12} sm={10} md={8} lg={6}>
+            <div className="m-auto" style={{ width: "80%" }}>
+              {alert.status && (
+                <SAlert type={alert.type} message={alert.message} />
+              )}
+            </div>
+            <Card className="m-auto mt-5 mb-5">
+              <Card.Body>
+                <h2 className="title fw-bold color-palette-1 text-center mt-2">Work Order</h2>
+                <div className="border-top border-gray-200 pt-4 mt-4"></div>
+                <ConfirmWOInput
+                  user={user}
+                  getNameManager={getNameManager}
+                  form={form}
+                  isLoading={isLoading}
+                  lists={lists}
+                  handleChange={handleChange}
+                  handleSubmit={handleSubmit}
+                />
+              </Card.Body>
+            </Card>
+          </Col>
+        </Row>
       </Container>
       <Footer />
     </>

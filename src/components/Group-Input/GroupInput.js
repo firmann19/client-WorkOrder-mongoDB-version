@@ -13,14 +13,14 @@ function GroupInput({ form, handleChange, handleSubmit, isLoading }) {
         value={form?.namaGroup}
         type="text"
         onChange={handleChange}
+        className="text-lg form-control"
       />
       <div className="mx-auto w-25 mt-5">
         <SButton
-          className="w-100"
+          className="w-100 btn btn-grup text-white"
           loading={isLoading}
           disabled={isLoading}
           action={handleSubmit}
-          variant="danger"
         >
           Submit
         </SButton>

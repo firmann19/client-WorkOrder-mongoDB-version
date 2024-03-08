@@ -10,7 +10,7 @@ import {
   fetchListsPosisi,
   fetchListsRoles,
 } from "../../redux/lists/actions";
-import { Card, Container } from "react-bootstrap";
+import { Card, Container, Row, Col } from "react-bootstrap";
 import SAlert from "../../components/partikel/Alert";
 import Navbar from "../../components/navbar";
 import { setNotif } from "../../redux/notif/actions";
@@ -143,28 +143,32 @@ const CreateUser = () => {
   return (
     <>
       <Navbar />
-      <Container md={12} style={{ height: "120vh" }}>
+      <Container fluid className="create-user">
         <BreadCrumb
           textSecound={"User"}
           urlSecound={"/user-page"}
           textThird="Create"
         />
-        <div className="m-auto" style={{ width: "60%" }}>
-          {alert.status && <SAlert type={alert.type} message={alert.message} />}
-        </div>
-        <Card style={{ width: "60%" }} className="m-auto mt-5">
-          <Card.Body>
-            <Card.Title className="text-center">Form Signup</Card.Title>
-            <p className="text-center">Create your account</p>
-            <RegisterInput
-              form={form}
-              isLoading={isLoading}
-              lists={lists}
-              handleChange={handleChange}
-              handleSubmit={handleSubmit}
-            />
-          </Card.Body>
-        </Card>
+        <Row className="justify-content-center">
+          <Col xs={12} sm={10} md={8} lg={6}>
+            <div className="m-auto" style={{ width: "80%" }}>
+              {alert.status && <SAlert type={alert.type} message={alert.message} />}
+            </div>
+            <Card className="m-auto mt-5 mb-5">
+              <Card.Body>
+                <Card.Title className="title fw-bold color-palette-1 mb-10 text-center">Form Signup</Card.Title>
+                <p className="label color-palette-1 text-center">Create your account</p>
+                <RegisterInput
+                  form={form}
+                  isLoading={isLoading}
+                  lists={lists}
+                  handleChange={handleChange}
+                  handleSubmit={handleSubmit}
+                />
+              </Card.Body>
+            </Card>
+          </Col>
+        </Row>
       </Container>
       <Footer />
     </>

@@ -1,0 +1,37 @@
+.create-grup input[type="text"],
+.edit-grup input[type="text"]{
+    border: 1px solid #0C145A;
+    padding: 0.75rem 1.625rem;
+    color: #0C145A;
+}
+
+.create-grup input[type="text"]:focus-within,
+.edit-grup input[type="text"]:focus-within{
+    color: #0C145A;
+}
+
+.create-grup input[type="text"]::placeholder,
+.edit-grup input[type="text"]::placeholder{
+    color: #CCD0DD;
+}
+
+.grup .btn-grup, .create-grup .btn-grup, .edit-grup .btn-grup{
+    font-family: 'Quicksand', sans-serif;
+	  font-weight: bold;
+    background-color: #4D17E2;
+}
+
+.title {
+  font-family: 'Pacifico', cursive;
+  color: #212529;
+  font-size: 2rem;
+}
+
+.label {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 600;
+  font-size: 1.2rem;
+  position: relative;
+  left: 0;
+  color: #212529;
+}

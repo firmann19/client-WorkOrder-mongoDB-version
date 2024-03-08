@@ -49,8 +49,8 @@ function EditUserInput({ form, lists, handleChange, handleSubmit, isLoading }) {
         onChange={handleChange}
       />
 
-      <Row className="mt-4 mb-4">
-        <Col className="ms-2">
+      <Row className="mt-4 mb-4 d-flex flex-wrap">
+        <Col xs={12} md={6} className="mb-3 flex-column">
           <SelectBox
             label={"Group"}
             placeholder={"Pilih group anda..."}
@@ -62,7 +62,7 @@ function EditUserInput({ form, lists, handleChange, handleSubmit, isLoading }) {
           />
         </Col>
 
-        <Col className="me-3">
+        <Col xs={12} md={6} className="mb-3 flex-column">
           <SelectBox
             label={"Departement"}
             placeholder={"Pilih departement anda..."}
@@ -75,8 +75,8 @@ function EditUserInput({ form, lists, handleChange, handleSubmit, isLoading }) {
         </Col>
       </Row>
 
-      <Row className="mt-4 mb-4">
-        <Col className="ms-2">
+      <Row className="mt-4 mb-4 d-flex flex-wrap">
+        <Col xs={12} md={6} className="mb-3 flex-column">
           <SelectBox
             label={"Posisi"}
             placeholder={"Pilih posisi anda..."}
@@ -88,7 +88,7 @@ function EditUserInput({ form, lists, handleChange, handleSubmit, isLoading }) {
           />
         </Col>
 
-        <Col className="me-3">
+        <Col xs={12} md={6} className="mb-3 flex-column">
           <SelectBox
             label={"Role"}
             placeholder={"Pilih role anda..."}

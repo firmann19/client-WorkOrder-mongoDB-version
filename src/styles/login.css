@@ -1,0 +1,37 @@
+.sign-in input[type="password"],
+.sign-in input[type="email"]{
+    border: 1px solid #0C145A;
+    padding: 0.75rem 1.625rem;
+    color: #0C145A;
+}
+
+.sign-in input[type="password"]:focus-within,
+.sign-in input[type="email"]:focus-within{
+    color: #0C145A;
+}
+
+.sign-in input[type="password"]::placeholder,
+.sign-in input[type="email"]::placeholder{
+    color: #CCD0DD;
+}
+
+.sign-in .btn-sign-in{
+  font-family: 'Quicksand', sans-serif;
+  font-weight: bold;
+  background-color: #4D17E2;
+}
+
+.title {
+  font-family: 'Pacifico', cursive;
+  color: #212529;
+  font-size: 2rem; /* Mengubah ukuran font agar sesuai dengan layar yang lebih kecil */
+}
+
+.label {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 600;
+  font-size: 1.2rem; /* Mengubah ukuran font agar sesuai dengan layar yang lebih kecil */
+  position: relative;
+  left: 0;
+  color: #212529;
+}

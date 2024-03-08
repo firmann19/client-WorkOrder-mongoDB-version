@@ -58,8 +58,8 @@ function DepartementPage() {
   return (
     <>
       <Navbar />
-      <Container className="mt-3" style={{ height: "80vh" }}>
-        <Button action={() => navigate("/departement-page/create-departement")}>
+      <Container className="departement mt-3" style={{ height: "80vh" }}>
+        <Button className="btn btn-departement" action={() => navigate("/departement-page/create-departement")}>
           Tambah
         </Button>
         <BreadCrumb textSecound={"Departement"} />

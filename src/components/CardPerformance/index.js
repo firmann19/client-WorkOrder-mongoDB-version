@@ -40,7 +40,7 @@ function CardPerformance() {
       <div className="row">
         <div className="col-6">
           <div class="card card-wo-performance mt-5 ">
-            <div class="card-header header-wo-performance text-2xl fw-semibold color-palette-1">
+            <div class="title card-header header-wo-performance text-2xl fw-semibold color-palette-1">
               WorkOrder Performance
             </div>
             <div className="card-body d-flex justify-content-around">

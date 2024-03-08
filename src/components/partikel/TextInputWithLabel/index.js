@@ -9,6 +9,7 @@ function TextInputWithLabel({
   type,
   onChange,
   placeholder,
+  className
 }) {
   return (
     <Form.Group className="mb-2">
@@ -19,6 +20,7 @@ function TextInputWithLabel({
         value={value}
         placeholder={placeholder}
         onChange={onChange}
+        className={className}
       />
     </Form.Group>
   );

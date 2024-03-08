@@ -8,7 +8,13 @@ const Dashboard = () => {
   return (
     <>
       <Navbar />
-      <div className="mt-3" style={{ height: "80vh" }}>
+      <div
+        className="overflow-auto h-screen"
+        style={{
+          minHeight: "100vh",
+          padding: "30px",
+        }}
+      >
         <CardDashboard />
         <CardPerformance />
       </div>

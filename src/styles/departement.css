@@ -1,0 +1,46 @@
+.create-departement input[type="text"],
+.edit-departement input[type="text"]{
+    border: 1px solid #0C145A;
+    padding: 0.75rem 1.625rem;
+    color: #0C145A;
+}
+
+.create-departement input[type="text"]:focus-within,
+.edit-departement input[type="text"]:focus-within{
+    color: #0C145A;
+}
+
+.create-departement input[type="text"]::placeholder,
+.edit-departement input[type="text"]::placeholder{
+    color: #CCD0DD;
+}
+
+.departement .btn-departement, .create-departement .btn-departement, .edit-departement .btn-departement{
+    font-family: 'Quicksand', sans-serif;
+	  font-weight: bold;
+    background-color: #4D17E2;
+}
+
+.title {
+  font-family: 'Pacifico', cursive;
+  color: #212529;
+  font-size: 2rem;
+}
+
+.label {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 600;
+  font-size: 1.2rem;
+  position: relative;
+  left: 0;
+  color: #212529;
+}
+
+@media (min-width: 768px) { /* Misalnya, di sini saya menggunakan ukuran 768px sebagai breakpoint untuk menandai bahwa ini bukan tampilan mobile */
+    .card-departement {
+      width: 100%;
+      max-width: 50%;
+      margin: auto;
+      /* Tambahan gaya CSS lainnya sesuai kebutuhan */
+    }
+}

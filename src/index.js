@@ -8,6 +8,10 @@ import "./styles/history-order.css"
 import "./styles/Navbar.css"
 import "./styles/card-performance.css"
 import "./styles/Footer.css"
+import "./styles/login.css"
+import "./styles/departement.css"
+import "./styles/user.css"
+import "./styles/workOrder.css"
 import App from "./App";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";

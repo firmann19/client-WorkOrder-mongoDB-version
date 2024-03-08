@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/img-redundant-alt */
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -6,7 +5,7 @@ import LoginInput from "../components/LoginInput";
 import SAlert from "../components/partikel/Alert";
 import { userLogin } from "../redux/auth/actions";
 import { postData } from "../utils/fetch";
-import { Card, Container } from "react-bootstrap";
+import { Card, Container, Row, Col } from "react-bootstrap";
 
 function LoginPage() {
   const dispatch = useDispatch();
@@ -66,21 +65,27 @@ function LoginPage() {
   };
 
   return (
-    <Container md={12} className="my-5">
-      <div className="m-auto" style={{ width: "50%" }}>
-        {alert.status && <SAlert type={alert.type} message={alert.message} />}
-      </div>
-      <Card style={{ width: "50%" }} className="m-auto mt-5">
-        <Card.Body>
-          <Card.Title className="text-center">Form Signin</Card.Title>
-          <LoginInput
-            form={form}
-            isLoading={isLoading}
-            handleChange={handleChange}
-            handleSubmit={handleSubmit}
-          />
-        </Card.Body>
-      </Card>
+    <Container className="sign-in my-5">
+      <Row className="justify-content-center">
+        <Col xs={12} sm={8} md={6} lg={6}>
+          {alert.status && (
+            <div className="mb-3">
+              <SAlert type={alert.type} message={alert.message} />
+            </div>
+          )}
+          <Card>
+            <Card.Body>
+              <Card.Title className="title fw-bold color-palette-1 text-center">Form Signin</Card.Title>
+              <LoginInput
+                form={form}
+                isLoading={isLoading}
+                handleChange={handleChange}
+                handleSubmit={handleSubmit}
+              />
+            </Card.Body>
+          </Card>
+        </Col>
+      </Row>
     </Container>
   );
 }

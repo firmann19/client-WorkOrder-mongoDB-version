@@ -1,5 +1,4 @@
-/* Sign-in */
-.history-order .img-fluid{
+/* .history-order .img-fluid{
     max-width: 100%;
     height: auto;
 }
@@ -41,6 +40,119 @@
     .history-order input[type="email"]{
         max-width: 437px;
     }
+    } */
+
+    .workOrder {
+        padding: 1rem; /* Tambahkan padding agar konten tidak terlalu dekat dengan tepi layar */
     }
 
-/*  */
+    .card-footer-btn {
+        display: flex;
+        align-items: center;
+        border-top-left-radius: 0!important;
+        border-top-right-radius: 0!important;
+    }
+    
+    .text-uppercase-bold-sm {
+        text-transform: uppercase!important;
+        font-weight: 500!important;
+        letter-spacing: 2px!important;
+        font-size: .85rem!important;
+    }
+    
+    .hover-lift-light {
+        transition: box-shadow .25s ease,transform .25s ease,color .25s ease,background-color .15s ease-in;
+    }
+    
+    .btn-group-lg>.btn,
+    .btn-lg {
+        padding: 0.8rem 1.85rem;
+        font-size: 1.1rem;
+        border-radius: 0 0 10px 10px;
+    }
+    
+    .btn-dark {
+        color: #fff;
+        background-color: #4D17E2 !important;
+        border-color: #6437e0 !important;
+        box-shadow: "0px 0px 5px rgba(0, 0, 0, 0.3)"
+    }
+    
+    .btn-dark:hover,
+    .btn-dark:active {
+      background-color: #321090 !important;
+      border-color: #321090 !important;
+      box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.5);
+    }
+    
+    .icon-circle[class*=text-] [fill]:not([fill=none]), .icon-circle[class*=text-] svg:not([fill=none]), .svg-icon[class*=text-] [fill]:not([fill=none]), .svg-icon[class*=text-] svg:not([fill=none]) {
+        fill: currentColor!important;
+    }
+    
+    .svg-icon>svg {
+        width: 1.45rem;
+        height: 1.45rem;
+    }
+     
+    .form-approval {
+        min-width: 20rem; /* Mengubah min-width agar lebih responsif */
+        padding: 0 1rem;
+        
+        .label {
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 600;
+            font-size: 1rem; /* Mengubah ukuran font agar sesuai dengan layar yang lebih kecil */
+            position: relative;
+            left: 0;
+            color: #212529;
+        }
+        
+        .form-control {
+            background-color: #f2f6f8;
+            border-radius: 0.5rem;
+            border: none;
+            
+            &.thick {
+                height: 3rem; /* Mengubah tinggi input agar sesuai dengan layar yang lebih kecil */
+                padding: .5rem 3rem; /* Mengubah padding input agar sesuai dengan layar yang lebih kecil */
+            }
+            
+            &:focus {
+                background-color: #f2f6f8;
+                border: none;
+            }
+        }
+        
+        ::placeholder {
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 600;
+            font-size: 1rem; /* Mengubah ukuran font agar sesuai dengan layar yang lebih kecil */
+            color: #838788;
+            position: relative;
+            left: 0;
+        }
+        
+        input,
+        textarea {
+            font-family: 'Quicksand', sans-serif;
+            color: #212529;
+            font-size: 1rem; /* Mengubah ukuran font agar sesuai dengan layar yang lebih kecil */
+        }
+    }
+      
+    @media (max-width: 992px){
+        .form-create-wo {
+            min-width: 100%; /* Mengatur lebar agar mengisi seluruh lebar layar pada perangkat seluler */
+        }
+    }
+    
+    @media (min-width: 768px) { /* Misalnya, di sini saya menggunakan ukuran 768px sebagai breakpoint untuk menandai bahwa ini bukan tampilan mobile */
+        .card-historyWO, .btn.btn-dark {
+          width: 100%;
+          max-width: 50%;
+          margin: auto;
+          /* Tambahan gaya CSS lainnya sesuai kebutuhan */
+        }
+    }
+    
+

@@ -55,8 +55,8 @@ function GroupPage() {
   return (
     <>
       <Navbar />
-      <Container className="mt-3" style={{ height: "80vh" }}>
-        <Button action={() => navigate("/group-page/create-group")}>
+      <Container className="grup mt-3" style={{ height: "80vh" }}>
+        <Button className="btn btn-grup" action={() => navigate("/group-page/create-group")}>
           Tambah
         </Button>
         <BreadCrumb textSecound={"Group"} />

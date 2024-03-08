@@ -65,8 +65,8 @@ function UserPage() {
   return (
     <>
       <Navbar />
-      <Container className="mt-3" style={{ height: "80vh" }}>
-        <Button action={() => navigate("/user-page/create-user")}>
+      <Container className="user mt-3" style={{ height: "80vh" }}>
+        <Button className="btn-user" action={() => navigate("/user-page/create-user")}>
           Tambah
         </Button>
         <BreadCrumb textSecound={"User"} />

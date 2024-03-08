@@ -4,10 +4,10 @@ import { Col, Form, Row } from "react-bootstrap";
 function HistoryWOInput({ form, handleSubmit, handleChange, isLoading }) {
   return (
     <>
-      <Form method="post" className="form-register">
-        <Row className="mt-4 mb-4">
-          <Col className="ms-2">
-            <Form.Label>User</Form.Label>
+      <Form method="post" className="form-history-wo">
+        <Row className="mt-4 mb-4 d-flex flex-wrap">
+          <Col xs={12} md={6} className="mb-3 flex-column">
+            <Form.Label className="label">User</Form.Label>
             <Form.Control
               name="UserRequest"
               value={form?.UserRequest}
@@ -18,8 +18,8 @@ function HistoryWOInput({ form, handleSubmit, handleChange, isLoading }) {
             />
           </Col>
 
-          <Col className="me-3">
-            <Form.Label>Nama Peralatan</Form.Label>
+          <Col xs={12} md={6} className="mb-3 flex-column d-flex flex-wrap">
+            <Form.Label className="label">Nama Peralatan</Form.Label>
             <Form.Control
               name="NamaBarang"
               value={form?.NamaBarang}
@@ -31,9 +31,9 @@ function HistoryWOInput({ form, handleSubmit, handleChange, isLoading }) {
           </Col>
         </Row>
 
-        <Row className="mt-4 mb-4">
-          <Col className="ms-2">
-            <Form.Label>Departemen</Form.Label>
+        <Row className="mt-4 mb-4 d-flex flex-wrap">
+          <Col xs={12} md={6} className="mb-3 flex-column">
+            <Form.Label className="label">Departemen</Form.Label>
             <Form.Control
               name="Departement"
               value={form?.Departement}
@@ -44,8 +44,8 @@ function HistoryWOInput({ form, handleSubmit, handleChange, isLoading }) {
             />
           </Col>
 
-          <Col className="me-3">
-            <Form.Label>Kode Peralatan</Form.Label>
+          <Col xs={12} md={6} className="mb-3 flex-column">
+            <Form.Label className="label">Kode Peralatan</Form.Label>
             <Form.Control
               name="KodeBarang"
               value={form?.KodeBarang}
@@ -57,9 +57,9 @@ function HistoryWOInput({ form, handleSubmit, handleChange, isLoading }) {
           </Col>
         </Row>
 
-        <Row className="mt-4 mb-4">
-          <Col className="ms-2">
-            <Form.Label>Tanggal Work Order</Form.Label>
+        <Row className="mt-4 mb-4 d-flex flex-wrap">
+          <Col xs={12} md={6} className="mb-3 flex-column">
+            <Form.Label className="label">Tanggal Work Order</Form.Label>
             <Form.Control
               name="Date_RequestWO"
               value={form?.Date_RequestWO}
@@ -70,8 +70,8 @@ function HistoryWOInput({ form, handleSubmit, handleChange, isLoading }) {
             />
           </Col>
 
-          <Col className="me-3">
-            <Form.Label>Tanggal Pengerjaan</Form.Label>
+          <Col xs={12} md={6} className="mb-3 flex-column">
+            <Form.Label className="label">Tanggal Pengerjaan</Form.Label>
             <Form.Control
               name="KodeBarang"
               value={form?.Date_CompletionWO}
@@ -84,7 +84,7 @@ function HistoryWOInput({ form, handleSubmit, handleChange, isLoading }) {
         </Row>
 
         <Form.Group className="mb-3">
-          <Form.Label>Permasalahan</Form.Label>
+          <Form.Label className="label">Permasalahan</Form.Label>
           <Form.Control
             as="textarea"
             rows={3}
@@ -94,9 +94,9 @@ function HistoryWOInput({ form, handleSubmit, handleChange, isLoading }) {
           />
         </Form.Group>
 
-        <Row className="mt-4">
-          <Col className="ms-3">
-            <Form.Label>Tindakan :</Form.Label>
+        <Row className="mt-4 flex flex-wrap">
+          <Col xs={12} md={2} className="mb-1 flex-column">
+            <Form.Label className="label">Tindakan :</Form.Label>
           </Col>
           <Col>
             <Form.Check // prettier-ignore
@@ -106,7 +106,7 @@ function HistoryWOInput({ form, handleSubmit, handleChange, isLoading }) {
             />
           </Col>
 
-          <Col className="me-3">
+          <Col xs={12} md={2} className="mb-1 flex-column">
             <Form.Check // prettier-ignore
               type={"checkbox"}
               id={``}
@@ -114,7 +114,7 @@ function HistoryWOInput({ form, handleSubmit, handleChange, isLoading }) {
             />
           </Col>
 
-          <Col className="me-3">
+          <Col xs={12} md={2} className="mb-1 flex-column">
             <Form.Check // prettier-ignore
               type={"checkbox"}
               id={``}
@@ -122,7 +122,7 @@ function HistoryWOInput({ form, handleSubmit, handleChange, isLoading }) {
             />
           </Col>
 
-          <Col className="me-3">
+          <Col xs={12} md={2} className="mb-1 flex-column">
             <Form.Check // prettier-ignore
               type={"checkbox"}
               id={``}
@@ -144,7 +144,7 @@ function HistoryWOInput({ form, handleSubmit, handleChange, isLoading }) {
         </Form.Group>
 
         <Form.Group className="mb-4 mt-4">
-          <Form.Label>Sparepart yang diganti</Form.Label>
+          <Form.Label className="label">Sparepart yang diganti</Form.Label>
           <Form.Control
             id="GantiSparepart"
             name="GantiSparepart"
@@ -157,9 +157,9 @@ function HistoryWOInput({ form, handleSubmit, handleChange, isLoading }) {
           />
         </Form.Group>
 
-        <Row className="mt-4 mb-4">
-          <Col className="ms-2">
-            <Form.Label>Pemohon</Form.Label>
+        <Row className="mt-4 mb-4 d-flex flex-wrap">
+          <Col xs={12} md={3} className="mb-3 flex-column">
+            <Form.Label className="label">Pemohon</Form.Label>
             <Form.Control
               name="UserRequst"
               value={form?.UserRequest}
@@ -170,8 +170,8 @@ function HistoryWOInput({ form, handleSubmit, handleChange, isLoading }) {
             />
           </Col>
 
-          <Col className="ms-2">
-            <Form.Label>Disetujui</Form.Label>
+          <Col xs={12} md={3} className="mb-3 flex-column">
+            <Form.Label className="label">Disetujui</Form.Label>
             <Form.Control
               name="UserApprove"
               value={form?.UserApprove}
@@ -182,8 +182,8 @@ function HistoryWOInput({ form, handleSubmit, handleChange, isLoading }) {
             />
           </Col>
 
-          <Col className="ms-2">
-            <Form.Label>Dikerjakan Oleh</Form.Label>
+          <Col xs={12} md={3} className="mb-3 flex-column">
+            <Form.Label className="label">Dikerjakan Oleh</Form.Label>
             <Form.Control
               name="StaffIT"
               value={form?.StaffIT}
@@ -194,8 +194,8 @@ function HistoryWOInput({ form, handleSubmit, handleChange, isLoading }) {
             />
           </Col>
 
-          <Col className="ms-2">
-            <Form.Label>Diketahui</Form.Label>
+          <Col xs={12} md={3} className="mb-3 flex-column">
+            <Form.Label className="label">Diketahui</Form.Label>
             <Form.Control
               name="HeadIT"
               value={form?.HeadIT}

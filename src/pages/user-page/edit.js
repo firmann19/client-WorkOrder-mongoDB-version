@@ -9,7 +9,7 @@ import {
   fetchListsRoles,
 } from "../../redux/lists/actions";
 import { getData, postData, putData } from "../../utils/fetch";
-import { Card, Container } from "react-bootstrap";
+import { Card, Container, Col, Row } from "react-bootstrap";
 import SAlert from "../../components/partikel/Alert";
 import BreadCrumb from "../../components/partikel/Breadcrumb";
 import EditUserInput from "../../components/EditUser-Input/EditUserInput";
@@ -192,28 +192,34 @@ function EditUser() {
   return (
     <>
       <Navbar />
-      <Container md={12} style={{ height: "120vh" }}>
+      <Container fluid className="edit-user">
         <BreadCrumb
           textSecound={"User"}
           urlSecound={"/user-page"}
           textThird="Edit"
         />
-        <div className="m-auto" style={{ width: "60%" }}>
-          {alert.status && <SAlert type={alert.type} message={alert.message} />}
-        </div>
-        <Card style={{ width: "60%" }} className="m-auto mt-5 mb-5">
-          <Card.Body>
-            <Card.Title className="text-center">Form Update</Card.Title>
-            <p className="text-center">Please update user data </p>
-            <EditUserInput
-              form={form}
-              isLoading={isLoading}
-              lists={lists}
-              handleChange={handleChange}
-              handleSubmit={handleSubmit}
-            />
-          </Card.Body>
-        </Card>
+        <Row className="justify-content-center">
+          <Col xs={12} sm={10} md={8} lg={6}>
+            <div className="m-auto" style={{ width: "80%" }}>
+              {alert.status && (
+                <SAlert type={alert.type} message={alert.message} />
+              )}
+            </div>
+            <Card className="m-auto mt-5 mb-5">
+              <Card.Body>
+                <Card.Title className="title fw-bold color-palette-1 mb-10 text-center">Form Update</Card.Title>
+                <p className="label color-palette-1 text-center">Please update user data</p>
+                <EditUserInput
+                  form={form}
+                  isLoading={isLoading}
+                  lists={lists}
+                  handleChange={handleChange}
+                  handleSubmit={handleSubmit}
+                />
+              </Card.Body>
+            </Card>
+          </Col>
+        </Row>
       </Container>
       <Footer />
     </>

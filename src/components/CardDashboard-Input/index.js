@@ -31,85 +31,95 @@ function CardDashboard() {
   }, []);
 
   return (
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-lg-3 col-6">
-          <div class="small-box bg-success rounded-3">
-              <div class="mt-3 d-flex justify-content-between mx-4 pt-3">
-                <div className="text-center">
-                  <h3 className="text-white">{getAllWO}</h3>
-
-                  <p className="text-white">Work Order</p>
-                </div>
-                <img src={LogoWO} className="icon-wo" />
+    <div className="container-fluid">
+      <div className="row">
+        <div className="col-lg-3 col-md-6 col-sm-6">
+          <div className="small-box bg-success rounded-3">
+            <div className="mt-3 d-flex justify-content-between mx-4 pt-3">
+              <div className="text-center">
+                <h3 className="text-white">{getAllWO}</h3>
+                <p className="label text-white">Work Order</p>
               </div>
-              <div className="justify-content-center d-flex">
-                <div className=" text-center mb-2">
-                  <Link to="/work-order-page" class="text-white text-decoration-none">
-                    More info <i class="fas fa-arrow-circle-right"></i>
-                  </Link>
-                  <BsFillArrowRightCircleFill />
-                </div>
+              <img src={LogoWO} alt="Work Order Logo" className="icon-wo" />
+            </div>
+            <div className="justify-content-center d-flex">
+              <div className=" text-center mb-2">
+                <Link
+                  to="/work-order-page"
+                  className="text-white text-decoration-none"
+                >
+                  More info <BsFillArrowRightCircleFill />
+                </Link>
               </div>
+            </div>
           </div>
         </div>
 
-        <div class="col-lg-3 col-6">
-          <div class="small-box bg-info rounded-3">
-            <div class="mt-3 d-flex justify-content-between mx-4 pt-3">
+        <div className="col-lg-3 col-md-6 col-sm-6">
+          <div className="small-box bg-info rounded-3">
+            <div className="mt-3 d-flex justify-content-between mx-4 pt-3">
               <div className="text-center">
                 <h3 className="text-white">{getAllUser}</h3>
-
-                <p className="text-white">User</p>
+                <p className="label text-white">User</p>
               </div>
-              <img src={LogoUser} className="icon-wo" />
+              <img src={LogoUser} alt="User Logo" className="icon-wo" />
             </div>
             <div className="justify-content-center d-flex">
               <div className=" text-center mb-2">
-                <Link to='/user-page' class="text-white text-decoration-none">
-                  More info <i class="fas fa-arrow-circle-right"></i>
+                <Link
+                  to="/user-page"
+                  className="text-white text-decoration-none"
+                >
+                  More info <BsFillArrowRightCircleFill />
                 </Link>
-                <BsFillArrowRightCircleFill />
               </div>
             </div>
           </div>
         </div>
-        <div class="col-lg-3 col-6">
-          <div class="small-box bg-danger rounded-3">
-            <div class="mt-3 d-flex justify-content-between mx-4 pt-3">
+
+        <div className="col-lg-3 col-md-6 col-sm-6">
+          <div className="small-box bg-danger rounded-3">
+            <div className="mt-3 d-flex justify-content-between mx-4 pt-3">
               <div className="text-center">
                 <h3 className="text-white">{getAllDepartement}</h3>
-
-                <p className="text-white">Departement</p>
+                <p className="label text-white">Departement</p>
               </div>
-              <img src={LogoDepartement} className="icon-wo" />
+              <img
+                src={LogoDepartement}
+                alt="Department Logo"
+                className="icon-wo"
+              />
             </div>
             <div className="justify-content-center d-flex">
               <div className=" text-center mb-2">
-                <Link to='/departement-page' class="text-white text-decoration-none">
-                  More info <i class="fas fa-arrow-circle-right"></i>
+                <Link
+                  to="/department-page"
+                  className="text-white text-decoration-none"
+                >
+                  More info <BsFillArrowRightCircleFill />
                 </Link>
-                <BsFillArrowRightCircleFill />
               </div>
             </div>
           </div>
         </div>
-        <div class="col-lg-3 col-6">
-          <div class="small-box bg-secondary rounded-3">
-            <div class="mt-3 d-flex justify-content-between mx-4 pt-3">
+
+        <div className="col-lg-3 col-md-6 col-sm-6">
+          <div className="small-box bg-secondary rounded-3">
+            <div className="mt-3 d-flex justify-content-between mx-4 pt-3">
               <div className="text-center">
                 <h3 className="text-white">{getAllGroup}</h3>
-
-                <p className="text-white">Group</p>
+                <p className="label text-white">Group</p>
               </div>
-              <img src={LogoGroup} className="icon-wo" />
+              <img src={LogoGroup} alt="Group Logo" className="icon-wo" />
             </div>
             <div className="justify-content-center d-flex">
               <div className=" text-center mb-2">
-                <Link to='/group-page' class="text-white text-decoration-none">
-                  More info <i class="fas fa-arrow-circle-right"></i>
+                <Link
+                  to="/group-page"
+                  className="text-white text-decoration-none"
+                >
+                  More info <BsFillArrowRightCircleFill />
                 </Link>
-                <BsFillArrowRightCircleFill />
               </div>
             </div>
           </div>

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { postData } from "../../utils/fetch";
 import BreadCrumb from "../../components/partikel/Breadcrumb";
-import { Card, Container } from "react-bootstrap";
+import { Card, Container, Row, Col } from "react-bootstrap";
 import SAlert from "../../components/partikel/Alert";
 import DepartementInput from "../../components/Departement-Input/DepartementInput";
 import Navbar from "../../components/navbar";
@@ -60,27 +60,31 @@ function CreateDepartement() {
   return (
     <>
       <Navbar />
-      <Container md={12} style={{ height: "80vh" }}>
+      <Container className="create-departement" fluid style={{minHeight: "80vh"}}>
         <BreadCrumb
           textSecound={"Departement"}
           urlSecound={"/departement-page"}
           textThird="Create"
         />
-        <div className="m-auto" style={{ width: "60%" }}>
-          {alert.status && <SAlert type={alert.type} message={alert.message} />}
-        </div>
-        <Card style={{ width: "60%" }} className="m-auto mt-5">
-          <Card.Body>
-            <Card.Title className="text-center">Form Departement</Card.Title>
-            <p className="text-center">Create New Departement</p>
-            <DepartementInput
-              form={form}
-              isLoading={isLoading}
-              handleChange={handleChange}
-              handleSubmit={handleSubmit}
-            />
-          </Card.Body>
-        </Card>
+        <Row className="justify-content-center">
+          <Col xs={12} sm={10} md={8} lg={6}>
+            <div className="m-auto" style={{ width: "80%" }}>
+              {alert.status && <SAlert type={alert.type} message={alert.message} />}
+            </div>
+            <Card className="card-departement m-auto mt-5">
+              <Card.Body>
+                <Card.Title className="title fw-bold color-palette-1 mb-10 text-center">Form Departement</Card.Title>
+                <p className="label color-palette-1 text-center">Create New Departement</p>
+                <DepartementInput
+                  form={form}
+                  isLoading={isLoading}
+                  handleChange={handleChange}
+                  handleSubmit={handleSubmit}
+                />
+              </Card.Body>
+            </Card>
+          </Col>
+        </Row>
       </Container>
       <Footer />
     </>

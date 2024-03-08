@@ -5,10 +5,9 @@
 }
 
 .text-footer {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 600;
+    font-size: 1.3rem; /* Mengubah ukuran font agar sesuai dengan layar yang lebih kecil */
     color: #0C145A;
     text-align: center;
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 32px;
 }

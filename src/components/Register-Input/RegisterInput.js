@@ -12,7 +12,6 @@ function RegisterInput({ form, lists, handleChange, handleSubmit, isLoading }) {
         placeholder={"Masukan Avatar..."}
         label={"Avatar"}
         name="avatar"
-        //value={form?.nama}
         type="file"
         onChange={handleChange}
       />
@@ -38,6 +37,7 @@ function RegisterInput({ form, lists, handleChange, handleSubmit, isLoading }) {
         value={form?.nama}
         type="text"
         onChange={handleChange}
+        className="text-lg form-control"
       />
 
       <TextInputWithLabel
@@ -47,10 +47,11 @@ function RegisterInput({ form, lists, handleChange, handleSubmit, isLoading }) {
         value={form?.email}
         type="text"
         onChange={handleChange}
+        className="text-lg form-control"
       />
 
-      <Row className="mt-4 mb-4">
-        <Col className="ms-2">
+      <Row className="mt-4 mb-4 d-flex flex-wrap">
+        <Col xs={12} md={6} className="mb-3 flex-column">
           <SelectBox
             label={"Group"}
             placeholder={"Pilih group anda..."}
@@ -59,10 +60,11 @@ function RegisterInput({ form, lists, handleChange, handleSubmit, isLoading }) {
             value={form.group}
             options={lists.groups}
             handleChange={(e) => handleChange(e)}
+            className="text-lg"
           />
         </Col>
 
-        <Col className="me-3">
+        <Col xs={12} md={6} className="mb-3 flex-column">
           <SelectBox
             label={"Departement"}
             placeholder={"Pilih departement anda..."}
@@ -71,12 +73,13 @@ function RegisterInput({ form, lists, handleChange, handleSubmit, isLoading }) {
             value={form.departement}
             options={lists.departements}
             handleChange={(e) => handleChange(e)}
+            className="text-lg"
           />
         </Col>
       </Row>
 
-      <Row className="mt-4 mb-4">
-        <Col className="ms-2">
+      <Row className="mt-4 mb-4 d-flex flex-wrap">
+        <Col xs={12} md={6} className="mb-3 flex-column">
           <SelectBox
             label={"Posisi"}
             placeholder={"Pilih posisi anda..."}
@@ -85,10 +88,11 @@ function RegisterInput({ form, lists, handleChange, handleSubmit, isLoading }) {
             value={form.posisi}
             options={lists.positions}
             handleChange={(e) => handleChange(e)}
+            className="text-lg"
           />
         </Col>
 
-        <Col className="me-3">
+        <Col xs={12} md={6} className="mb-3 flex-column">
           <SelectBox
             label={"Role"}
             placeholder={"Pilih role anda..."}
@@ -97,6 +101,7 @@ function RegisterInput({ form, lists, handleChange, handleSubmit, isLoading }) {
             value={form.role}
             options={lists.role}
             handleChange={(e) => handleChange(e)}
+            className="text-lg"
           />
         </Col>
       </Row>
@@ -108,14 +113,14 @@ function RegisterInput({ form, lists, handleChange, handleSubmit, isLoading }) {
         value={form?.password}
         type="password"
         onChange={handleChange}
+        className="text-lg form-control"
       />
       <div className="mx-auto w-25 mt-5">
         <SButton
-          className="w-100"
+          className="w-100 btn btn-register-user text-white"
           loading={isLoading}
           disabled={isLoading}
           action={handleSubmit}
-          variant="danger"
         >
           Submit
         </SButton>

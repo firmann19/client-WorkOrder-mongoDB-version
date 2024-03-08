@@ -22,13 +22,13 @@ export default function SFORM({ form, handleChange, handleSubmit, isLoading }) {
         value={form?.password}
         type="password"
         onChange={handleChange}
+        className="text-lg form-control"
       />
 
       <SButton
         loading={isLoading}
         disabled={isLoading}
-        variant="primary"
-        className="bg-danger"
+        className="btn btn-sign-in text-white mt-3"
         action={handleSubmit}
       >
         Submit

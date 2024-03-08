@@ -1,0 +1,43 @@
+.create-user input[type="text"],
+.edit-user input[type="text"],
+.create-user input[type="password"],
+.edit-user input[type="password"]{
+    border: 1px solid #0C145A;
+    padding: 0.75rem 1.625rem;
+    color: #0C145A;
+}
+
+.create-user input[type="text"]:focus-within,
+.edit-user input[type="text"]:focus-within,
+.create-user input[type="password"]:focus-within,
+.edit-user input[type="password"]:focus-within{
+    color: #0C145A;
+}
+
+.create-user input[type="text"]::placeholder,
+.edit-user input[type="text"]::placeholder
+.create-user input[type="password"]::placeholder,
+.edit-user input[type="password"]::placeholder{
+    color: #CCD0DD;
+}
+
+.user .btn-user, .create-user .btn-user, .edit-user .btn-user{
+    font-family: 'Quicksand', sans-serif;
+	  font-weight: bold;
+    background-color: #4D17E2;
+}
+
+.title {
+  font-family: 'Pacifico', cursive;
+  color: #212529;
+  font-size: 2rem;
+}
+
+.label {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 600;
+  font-size: 1.2rem;
+  position: relative;
+  left: 0;
+  color: #212529;
+}

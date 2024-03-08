@@ -2,12 +2,14 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { postData } from "../../utils/fetch";
 import BreadCrumb from "../../components/partikel/Breadcrumb";
-import { Card, Container } from "react-bootstrap";
+import { Card, Container, Row, Col } from "react-bootstrap";
 import SAlert from "../../components/partikel/Alert";
 import GroupInput from "../../components/Group-Input/GroupInput";
 import Navbar from "../../components/navbar";
 import { setNotif } from "../../redux/notif/actions";
 import { useDispatch } from "react-redux";
+import Footer from "../../components/Footer";
+import "../../styles/group.css"
 
 function CreateGroup() {
   const navigate = useNavigate();
@@ -59,29 +61,34 @@ function CreateGroup() {
 
   return (
     <>
-    <Navbar />
-    <Container md={12}>
-      <BreadCrumb
-        textSecound={"Group"}
-        urlSecound={"/group-page"}
-        textThird="Create"
-      />
-      <div className="m-auto" style={{ width: "60%" }}>
-        {alert.status && <SAlert type={alert.type} message={alert.message} />}
-      </div>
-      <Card style={{ width: "60%" }} className="m-auto mt-5">
-        <Card.Body>
-          <Card.Title className="text-center">Form Group</Card.Title>
-          <p className="text-center">Create New Group</p>
-          <GroupInput
-            form={form}
-            isLoading={isLoading}
-            handleChange={handleChange}
-            handleSubmit={handleSubmit}
-          />
-        </Card.Body>
-      </Card>
-    </Container>
+      <Navbar />
+      <Container className="create-grup" style={{minHeight: "80vh"}}>
+        <BreadCrumb
+          textSecound={"Group"}
+          urlSecound={"/group-page"}
+          textThird="Create"
+        />
+        <Row className="justify-content-center">
+          <Col xs={12} sm={10} md={8} lg={6}>
+            <div className="text-center">
+              {alert.status && <SAlert type={alert.type} message={alert.message} />}
+            </div>
+            <Card className="mt-5">
+              <Card.Body>
+                <Card.Title className="title fw-bold color-palette-1 mb-10 text-center">Form Group</Card.Title>
+                <p className="label color-palette-1 text-center">Create New Group</p>
+                <GroupInput
+                  form={form}
+                  isLoading={isLoading}
+                  handleChange={handleChange}
+                  handleSubmit={handleSubmit}
+                />
+              </Card.Body>
+            </Card>
+          </Col>
+        </Row>
+      </Container>
+      <Footer />
     </>
   );
 }

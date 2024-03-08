@@ -90,7 +90,7 @@ function WorkOrderPage() {
             "Peralatan",
             "Kode",
             "Status",
-            "Tanngal Order",
+            "Tanggal Order",
             "Pengerjaan",
             "Aksi",
           ]}

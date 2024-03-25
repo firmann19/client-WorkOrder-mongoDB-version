@@ -90,7 +90,7 @@ function WorkOrderPage() {
             "Peralatan",
             "Kode",
             "Status",
-            "Tanggal Order",
+            "Durasi Pengerjaan",
             "Pengerjaan",
             "Aksi",
           ]}
@@ -101,7 +101,7 @@ function WorkOrderPage() {
             "NamaPeralatan",
             "KodePeralatan",
             "Status_WO",
-            "DateRequestWO",
+            "durationWO",
             "Status_Pengerjaan",
             "Aksi",
           ]}

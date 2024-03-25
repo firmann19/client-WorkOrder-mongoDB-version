@@ -53,9 +53,7 @@ export const fetchCheckouts = () => {
         res.NamaPeralatan = res.NamaBarang;
         res.KodePeralatan = res.KodeBarang;
         res.Status_WO = res.StatusWO;
-        res.DateRequestWO = moment(res.Date_RequestWO).format(
-          "DD-MM-YYYY, h:mm:ss a"
-        );
+        res.durationWO = `${res.duration.days} hari ${res.duration.hours} jam ${res.duration.minutes} menit ${res.duration.seconds} detik`; 
         res.Status_Pengerjaan = res.StatusPengerjaan;
       });
 

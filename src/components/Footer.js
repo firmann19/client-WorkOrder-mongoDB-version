@@ -4,7 +4,7 @@ function Footer() {
   return (
     <div className="footer">
       <p className="text-footer">
-        ©2023 PT. Arai Rubber Seal Indonesia | All Rights Reserved | Work Order
+        ©2023 PT. HTA Indonesia | All Rights Reserved | Work Order
       </p>
     </div>
   );

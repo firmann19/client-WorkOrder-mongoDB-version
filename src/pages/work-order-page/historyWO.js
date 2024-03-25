@@ -37,6 +37,8 @@ function HistoryWO() {
 
   const [isCloseDisabled, setIsCloseDisabled] = useState(false);
 
+  const [role, setRole] = useState(null);
+
   const [isLoading, setIsLoading] = useState(false);
 
   const [alert, setAlert] = useState({
@@ -71,6 +73,12 @@ function HistoryWO() {
   };
 
   useEffect(() => {
+    const fetchData = async () => {
+      const { role } = JSON.parse(localStorage.getItem("auth")) || {};
+      setRole(role);
+    };
+    fetchData();
+
     setIsCloseDisabled(form.StatusPengerjaan === "Close");
     fetchOneWO();
   }, [form.StatusPengerjaan]);
@@ -140,7 +148,7 @@ function HistoryWO() {
           className="btn btn-dark btn-lg card-footer-btn text-uppercase-bold-sm hover-lift-light w-100 d-flex justify-content-center"
           loading={isLoading}
           action={handleSubmit}
-          disabled={isLoading || isCloseDisabled}
+          disabled={isLoading || isCloseDisabled || role !== "Manager IT"}
         >
           <span className="svg-icon text-white me-2">
             <svg

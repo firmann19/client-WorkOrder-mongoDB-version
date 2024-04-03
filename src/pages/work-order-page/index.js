@@ -43,7 +43,7 @@ function WorkOrderPage() {
     }).then(async (result) => {
       if (result.isConfirmed) {
         const payload = {
-          StatusPengerjaan: status === "OnProgress" ? "Pending" : "OnProgress",
+          StatusPengerjaan: status === "On Progress" ? "Pending" : "On Progress",
         };
         const res = await putData(`/checkout/${id}/statuspengerjaan`, payload);
         if (res?.data?.data) {
@@ -110,7 +110,7 @@ function WorkOrderPage() {
           customAction={(id, StatusPengerjaan = "", StatusWO) => {
             const isDisabled =
               StatusPengerjaan === "Close" ||
-              StatusPengerjaan === "OnProgress" ||
+              StatusPengerjaan === "On Progress" ||
               StatusWO !== "Approve";
 
             return (

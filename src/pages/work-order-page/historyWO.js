@@ -14,6 +14,8 @@ import Swal from "sweetalert2";
 import { setNotif } from "../../redux/notif/actions";
 import { useDispatch } from "react-redux";
 import Footer from "../../components/Footer";
+import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
 
 function HistoryWO() {
   const { id } = useParams();
@@ -33,6 +35,7 @@ function HistoryWO() {
     StaffIT: "",
     Date_CompletionWO: "",
     StatusPengerjaan: "",
+    selectedAction: "",
   });
 
   const [isCloseDisabled, setIsCloseDisabled] = useState(false);
@@ -69,6 +72,7 @@ function HistoryWO() {
         "DD-MM-YYYY, h:mm:ss a"
       ),
       StatusPengerjaan: res.data.data.StatusPengerjaan,
+      selectedAction: res.data.data.selectedAction,
     });
   };
 
@@ -121,6 +125,19 @@ function HistoryWO() {
     });
   };
 
+  const downloadPDF = () => {
+    const input = document.getElementById("pdf-content");
+
+    html2canvas(input).then((canvas) => {
+      const imgData = canvas.toDataURL("image/png");
+      const pdf = new jsPDF("p", "mm", "a4");
+      const width = pdf.internal.pageSize.getWidth();
+      const height = pdf.internal.pageSize.getHeight();
+      pdf.addImage(imgData, "PNG", 10, 10, width - 20, height - 20); // Add margin on each side
+      pdf.save("history_wo.pdf");
+    });
+  };
+
   return (
     <>
       <Navbar />
@@ -131,18 +148,40 @@ function HistoryWO() {
           marginBottom: "3rem",
         }}
       >
+        <div className="save d-flex justify-content-end mb-2">
+          <div className="p-2">
+            <button className="btn btn-primary" onClick={downloadPDF}>
+              <i className="icon-download"></i> Download
+            </button>
+          </div>
+          <div className="p-2">
+            <a href="#" className="btn btn-secondary">
+              <i className="icon-printer"></i> Print
+            </a>
+          </div>
+        </div>
         <Card
-          className="mx-auto mt-5 card-historyWO"
+          id="pdf-content"
+          className="mx-auto card-historyWO"
           style={{
-            boxShadow: "0px 0px 5px rgba(0, 0, 0, 0.3)", // Bayangan pada setiap sisi
-            borderRadius: "10px 10px 0 0", // Sudut bulatan pada kartu
-            padding: "20px",
+            boxShadow: "0px 0px 5px rgba(0, 0, 0, 0.3)",
           }}
         >
-          <h2 className="title fw-bold color-palette-1 text-center">Work Order</h2>
-          <div className="border-top border-gray-200 pt-4 mt-4">
+          <Card.Body
+            style={{
+              backgroundColor: "white",
+              borderColor: "white",
+              borderRadius: "10px",
+              padding: "20px",
+            }}
+          >
+          <h2 className="title fw-bold color-palette-1 text-center">
+            Work Order
+          </h2>
+          <div className="pt-4 mt-4">
             <HistoryWOInput form={form} isLoading={isLoading} />
           </div>
+          </Card.Body>
         </Card>
         <SButton
           className="btn btn-dark btn-lg card-footer-btn text-uppercase-bold-sm hover-lift-light w-100 d-flex justify-content-center"

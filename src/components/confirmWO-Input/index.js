@@ -1,7 +1,7 @@
 import React from "react";
 import SButton from "../partikel/Button";
 import { Col, Form, Row } from "react-bootstrap";
-import "../../styles/workOrder.css"
+import "../../styles/workOrder.css";
 
 function ConfirmWOInput({
   form,
@@ -87,33 +87,49 @@ function ConfirmWOInput({
         </Col>
         <Col xs={12} md={2} className="mb-1 flex-column">
           <Form.Check // prettier-ignore
-            type={"checkbox"}
-            id={``}
-            label={`Perbaikan`}
+            type="radio"
+            id="perbaikan"
+            name="selectedAction"
+            label="Perbaikan"
+            value="perbaikan"
+            onChange={handleChange}
+            checked={form.selectedAction === 'perbaikan'}
           />
         </Col>
 
         <Col xs={12} md={2} className="mb-1 flex-column">
           <Form.Check // prettier-ignore
-            type={"checkbox"}
-            id={``}
-            label={`Pergantian`}
+            type="radio"
+            id="pergantian"
+            name="selectedAction"
+            label="Pergantian"
+            value="pergantian"
+            onChange={handleChange}
+            checked={form.selectedAction === 'pergantian'}
           />
         </Col>
 
         <Col xs={12} md={2} className="mb-1 flex-column">
           <Form.Check // prettier-ignore
-            type={"checkbox"}
-            id={``}
-            label={`Request_Data`}
+            type="radio"
+            id="request_data"
+            name="selectedAction"
+            label="Request_Data"
+            value="request_data"
+            onChange={handleChange}
+            checked={form.selectedAction === 'request_data'}
           />
         </Col>
 
         <Col xs={12} md={2} className="mb-1 flex-column">
           <Form.Check // prettier-ignore
-            type={"checkbox"}
-            id={``}
-            label={`Others`}
+            type="radio"
+            id="others"
+            name="selectedAction"
+            label="Others"
+            value="others"
+            onChange={handleChange}
+            checked={form.selectedAction === 'others'}
           />
         </Col>
       </Row>
@@ -142,10 +158,7 @@ function ConfirmWOInput({
         </Col>
       </Row>
 
-      <SButton
-        className="w-40 btn-confirmation"
-        href="/create-changeSparepart"
-      >
+      <SButton className="w-40 btn-confirmation" href="/create-changeSparepart">
         Ajukan Pergantian
       </SButton>
 

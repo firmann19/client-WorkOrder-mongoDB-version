@@ -1,7 +1,7 @@
 import React from "react";
 import { Col, Form, Row } from "react-bootstrap";
 
-function HistoryWOInput({ form, handleSubmit, handleChange, isLoading }) {
+function HistoryWOInput({ form, handleChange }) {
   return (
     <>
       <Form method="post" className="form-history-wo">
@@ -98,35 +98,47 @@ function HistoryWOInput({ form, handleSubmit, handleChange, isLoading }) {
           <Col xs={12} md={2} className="mb-1 flex-column">
             <Form.Label className="label">Tindakan :</Form.Label>
           </Col>
-          <Col>
-            <Form.Check // prettier-ignore
-              type={"checkbox"}
-              id={``}
-              label={`Perbaikan`}
+          <Col xs={12} md={2} className="mb-1 flex-column">
+            <Form.Check
+              type="radio"
+              id="perbaikan"
+              name="selectedAction"
+              label="Perbaikan"
+              value="perbaikan"
+              checked={form.selectedAction === "perbaikan"}
             />
           </Col>
 
           <Col xs={12} md={2} className="mb-1 flex-column">
-            <Form.Check // prettier-ignore
-              type={"checkbox"}
-              id={``}
-              label={`Pergantian`}
+            <Form.Check
+              type="radio"
+              id="pergantian"
+              name="selectedAction"
+              label="Pergantian"
+              value="pergantian"
+              checked={form.selectedAction === "pergantian"}
             />
           </Col>
 
           <Col xs={12} md={2} className="mb-1 flex-column">
-            <Form.Check // prettier-ignore
-              type={"checkbox"}
-              id={``}
-              label={`Request_Data`}
+            <Form.Check
+              type="radio"
+              id="request_data"
+              name="selectedAction"
+              label="Request_Data"
+              value="request_data"
+              checked={form.selectedAction === "request_data"}
             />
           </Col>
 
           <Col xs={12} md={2} className="mb-1 flex-column">
-            <Form.Check // prettier-ignore
-              type={"checkbox"}
-              id={``}
-              label={`Others`}
+            <Form.Check
+              type="radio"
+              id="others"
+              name="selectedAction"
+              label="Others"
+              value="others"
+              checked={form.selectedAction === "others"}
             />
           </Col>
         </Row>

@@ -27,6 +27,7 @@ function ConfirmationWO() {
     HeadIT: "",
     StaffIT: "",
     Date_CompletionWO: "",
+    selectedAction: "",
   });
 
   const [alert, setAlert] = useState({
@@ -91,6 +92,7 @@ function ConfirmationWO() {
       HeadIT: getManager,
       StaffIT: userId,
       Date_CompletionWO: form.Date_CompletionWO,
+      selectedAction: form.selectedAction,
     };
 
     const res = await putData(`/checkout/${id}`, payload);
@@ -120,14 +122,16 @@ function ConfirmationWO() {
         />
         <Row className="justify-content-center">
           <Col xs={12} sm={10} md={8} lg={6}>
-            <div className="m-auto" style={{ width: "80%" }}>
+            <div className="m-auto" style={{ width: "100%" }}>
               {alert.status && (
                 <SAlert type={alert.type} message={alert.message} />
               )}
             </div>
             <Card className="m-auto mt-5 mb-5">
               <Card.Body>
-                <h2 className="title fw-bold color-palette-1 text-center mt-2">Work Order</h2>
+                <h2 className="title fw-bold color-palette-1 text-center mt-2">
+                  Work Order
+                </h2>
                 <div className="border-top border-gray-200 pt-4 mt-4"></div>
                 <ConfirmWOInput
                   user={user}

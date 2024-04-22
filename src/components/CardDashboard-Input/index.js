@@ -93,7 +93,7 @@ function CardDashboard() {
             <div className="justify-content-center d-flex">
               <div className=" text-center mb-2">
                 <Link
-                  to="/department-page"
+                  to="/departement-page"
                   className="text-white text-decoration-none"
                 >
                   More info <BsFillArrowRightCircleFill />

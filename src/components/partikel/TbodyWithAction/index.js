@@ -11,6 +11,7 @@ function TbodyWithAction({
   deleteAction,
   actionNotDisplay,
   customAction,
+  customActionSecond,
   confirmationUrl,
   Detail,
   status,
@@ -48,7 +49,23 @@ function TbodyWithAction({
               )}
               {!actionNotDisplay && (
                 <td>
-                  {customAction && customAction(data._id, data.StatusPengerjaan, data.StatusWO)}
+                  {customAction &&
+                    customAction(
+                      data._id,
+                      data.StatusPengerjaan,
+                      data.StatusWO
+                    )}
+                  {customActionSecond && (
+                    <Button
+                      className={"mx-2"}
+                      variant="danger"
+                      size={"sm"}
+                      action={() => customActionSecond(data._id)}
+                      disabled={data.statusPengajuan === "Diterima"}
+                    >
+                      Ditolak
+                    </Button>
+                  )}
                   {editUrl && (
                     <Button
                       variant="success"

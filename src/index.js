@@ -10,6 +10,7 @@ import "./styles/card-performance.css"
 import "./styles/Footer.css"
 import "./styles/login.css"
 import "./styles/departement.css"
+import "./styles/changeSparepart.css"
 import "./styles/user.css"
 import "./styles/workOrder.css"
 import App from "./App";

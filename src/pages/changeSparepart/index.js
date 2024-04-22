@@ -116,30 +116,20 @@ function ChangeSparepartPage() {
             "statusPengajuan",
             "Aksi",
           ]}
-          customAction={(id, status = "") => {
+          customAction={(id, statusPengajuan = "") => {
             return (
               <Button
                 className={"mx-2"}
                 variant="success"
                 size={"sm"}
-                action={() => handleChangeStatus(id, status)}
+                action={() => handleChangeStatus(id, statusPengajuan)}
+                disabled={statusPengajuan === "Ditolak"}
               >
                 Diterima
               </Button>
             );
           }}
-          customActionSecond={(id, status = "") => {
-            return (
-              <Button
-                className={"mx-2"}
-                variant="danger"
-                size={"sm"}
-                action={() => handleChangeStatusSecond(id, status)}
-              >
-                Ditolak
-              </Button>
-            );
-          }}
+          customActionSecond={(id) => handleChangeStatusSecond(id)}
           Detail={`/changeSparepart-page/historyChangeSparepart-page`}
         />
       </Container>

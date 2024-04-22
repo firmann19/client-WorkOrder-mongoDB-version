@@ -17,7 +17,7 @@ function CreateChangeSparepart() {
   const [getManager, setGetManager] = useState(null);
   const [getNameManager, setGetNameManager] = useState(null);
   const [form, setForm] = useState({
-    userRequestWo: "",
+    userRequestWO: "",
     departementUser: "",
     namaSparepart: "",
     harga: "",
@@ -53,7 +53,7 @@ function CreateChangeSparepart() {
     setIsLoading(true);
 
     const payload = {
-      userRequestWo: form.userRequestWo,
+      userRequestWO: form.userRequestWO,
       departementUser: form.departementUser,
       namaSparepart: form.namaSparepart,
       harga: form.harga,
@@ -95,7 +95,7 @@ function CreateChangeSparepart() {
         <div className="m-auto" style={{ width: "60%" }}>
           {alert.status && <SAlert type={alert.type} message={alert.message} />}
         </div>
-        <Card style={{ width: "60%" }} className="m-auto mt-5 mb-5">
+        <Card className="m-auto mb-5 card-changeSparepart">
           <Card.Body>
             <Card.Title className="text-center mb-5">
               Pergantian Sparepart

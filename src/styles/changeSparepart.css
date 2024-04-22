@@ -1,0 +1,8 @@
+@media (min-width: 768px) { /* Misalnya, di sini saya menggunakan ukuran 768px sebagai breakpoint untuk menandai bahwa ini bukan tampilan mobile */
+    .card-changeSparepart {
+      width: 100%;
+      max-width: 50%;
+      margin: auto;
+      /* Tambahan gaya CSS lainnya sesuai kebutuhan */
+    }
+}

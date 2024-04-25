@@ -8,6 +8,7 @@ function ChangeSparepartInput({
   handleChange,
   handleSubmit,
   isLoading,
+  user,
 }) {
   return (
     <Form method="post" className="form-register">
@@ -16,9 +17,10 @@ function ChangeSparepartInput({
           <Form.Label>Pengaju</Form.Label>
           <Form.Control
             name="userRequestWO"
-            value={form?.userRequestWO}
+            value={user}
             type="text"
-            onChange={handleChange}
+            disabled
+            readOnly
           />
         </Col>
 
@@ -46,6 +48,18 @@ function ChangeSparepartInput({
         </Col>
 
         <Col xs={12} md={6} className="mb-3">
+          <Form.Label>Kode Sparepart</Form.Label>
+          <Form.Control
+            name="kodeSparepart"
+            value={form?.kodeSparepart}
+            type="text"
+            onChange={handleChange}
+          />
+        </Col>
+      </Row>
+
+      <Row>
+        <Col xs={12} md={6} className="mb-3">
           <Form.Label>Harga Satuan</Form.Label>
           <Form.Control
             name="harga"
@@ -54,9 +68,7 @@ function ChangeSparepartInput({
             onChange={handleChange}
           />
         </Col>
-      </Row>
 
-      <Row>
         <Col xs={12} md={6} className="mb-3">
           <Form.Label>Jumlah Order</Form.Label>
           <Form.Control

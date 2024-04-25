@@ -26,7 +26,7 @@ function CardPerformance() {
   }, []);
 
   const chartData = {
-    labels: ["pending", "OnProgress", "Close"],
+    labels: ["pending", "On Progress", "Close"],
     datasets: [
       {
         data: [getAllPending, getAllOnProgress, getAllClose],
@@ -61,7 +61,7 @@ function CardPerformance() {
                       className="me-1"
                       style={{ color: "#D8A900" }}
                     />
-                    OnProgress: {getAllOnProgress} WorkOrder
+                    On Progress: {getAllOnProgress} WorkOrder
                   </div>
                   <div className="text-lg mt-1">
                     <RiCheckboxBlankFill

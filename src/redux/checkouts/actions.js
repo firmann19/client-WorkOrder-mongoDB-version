@@ -8,7 +8,6 @@ import {
   START_FETCHING_CHECKOUTS,
   SUCCESS_FETCHING_CHECKOUTS,
 } from "./constants";
-import moment from "moment";
 
 let debouncedFetchCheckouts = debounce(getData, 1000);
 

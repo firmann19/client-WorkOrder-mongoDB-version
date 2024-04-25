@@ -166,10 +166,10 @@ export const startFetchingListsRoles = () => {
   };
 };
 
-export const successFetchingListsRoles = ({ role }) => {
+export const successFetchingListsRoles = ({ roles }) => {
   return {
     type: SUCCESS_FETCHING_LISTS_ROLES,
-    role,
+    roles,
   };
 };
 
@@ -196,10 +196,9 @@ export const fetchListsRoles = () => {
         });
       });
 
-      dispatch(successFetchingListsRoles({ role: _temp }));
+      dispatch(successFetchingListsRoles({ roles: _temp }));
     } catch (error) {
       dispatch(errorFetchingListsRoles());
     }
   };
 };
-

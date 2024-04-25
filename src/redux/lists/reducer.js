@@ -27,7 +27,7 @@ const initialState = {
   statusGroups: statuslist.idle,
   positions: [],
   statusPosisi: statuslist.idle,
-  role: [],
+  roles: [],
   statusRole: statuslist.idle,
 };
 
@@ -58,32 +58,37 @@ export default function reducer(state = initialState, action) {
         statusGroups: statuslist.success,
         groups: action.groups,
       };
-    
+
     case START_FETCHING_LISTS_POSISI:
       return { ...state, statusPosisi: statuslist.process };
-  
+
     case ERROR_FETCHING_LISTS_POSISI:
       return { ...state, statusPosisi: statuslist.error };
-  
+
     case SUCCESS_FETCHING_LISTS_POSISI:
       return {
-          ...state,
-          statusPosisi: statuslist.success,
-          positions: action.positions,
-        };
-      
+        ...state,
+        statusPosisi: statuslist.success,
+        positions: action.positions,
+      };
+
     case START_FETCHING_LISTS_ROLES:
       return { ...state, statusRole: statuslist.process };
-    
+
     case ERROR_FETCHING_LISTS_ROLES:
       return { ...state, statusRole: statuslist.error };
-    
+
     case SUCCESS_FETCHING_LISTS_ROLES:
       return {
-          ...state,
-          statusRole: statuslist.success,
-          role: action.role,
-        };
+        ...state,
+        statusRole: statuslist.success,
+        roles: action.roles,
+      };
+      return {
+        ...state,
+        statusPengajuans: statuslist.success,
+        status: action.status,
+      };
 
     default:
       return state;

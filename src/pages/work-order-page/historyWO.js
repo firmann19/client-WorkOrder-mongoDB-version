@@ -9,8 +9,8 @@ import HistoryWOInput from "../../components/HistoryWO-Input";
 import Navbar from "../../components/navbar";
 import moment from "moment";
 import SButton from "../../components/partikel/Button";
+import BreadCrumb from "../../components/partikel/Breadcrumb";
 import Swal from "sweetalert2";
-// import ApproveImg from "../../assets/images/approve-task.jpg";
 import { setNotif } from "../../redux/notif/actions";
 import { useDispatch } from "react-redux";
 import Footer from "../../components/Footer";
@@ -148,6 +148,12 @@ function HistoryWO() {
           marginBottom: "3rem",
         }}
       >
+        <BreadCrumb
+          textSecound={"Work Order"}
+          urlSecound={"/work-order-page"}
+          textThird="Detail"
+        />
+
         <div className="save d-flex justify-content-end mb-2">
           <div className="p-2">
             <button className="btn btn-primary" onClick={downloadPDF}>

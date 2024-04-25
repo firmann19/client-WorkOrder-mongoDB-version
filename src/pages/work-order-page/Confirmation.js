@@ -118,7 +118,7 @@ function ConfirmationWO() {
         <BreadCrumb
           textSecound={"Work Order"}
           urlSecound={"/work-order-page"}
-          textThird="Edit"
+          textThird="Confirmation"
         />
         <Row className="justify-content-center">
           <Col xs={12} sm={10} md={8} lg={6}>

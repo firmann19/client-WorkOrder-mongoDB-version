@@ -3,6 +3,7 @@ import debounce from "debounce-promise";
 import { clearNotif } from "../notif/actions";
 import {
   ERROR_FETCHING_PENGAJUAN,
+  SET_KEYWORD,
   START_FETCHING_PENGAJUAN,
   SUCCESS_FETCHING_PENGAJUAN,
 } from "./constants";
@@ -29,7 +30,7 @@ export const errorFetchingPengajuan = () => {
 };
 
 export const fetchPengajuan = () => {
-  return async (dispatch) => {
+  return async (dispatch, getState) => {
     dispatch(startFetchingPengajuan());
 
     try {
@@ -37,7 +38,18 @@ export const fetchPengajuan = () => {
         dispatch(clearNotif());
       }, 5000);
 
-      let res = await debouncedFetchPengajuan("/changeSparepart");
+      let params = {
+        keyword: getState().pengajuans.keyword,
+      };
+
+      let res = await debouncedFetchPengajuan("/changeSparepart", params);
+
+      res.data.data.forEach((res) => {
+        res.UserRequestName = res.userRequestWO.nama;
+        res.NamaPeralatan = res.namaSparepart;
+        res.KodePeralatan = res.kodeSparepart;
+        res.StatusPengajuan = res.statusPengajuan;
+      }); 
 
       dispatch(
         successFetchingPengajuan({
@@ -47,5 +59,12 @@ export const fetchPengajuan = () => {
     } catch (error) {
       dispatch(errorFetchingPengajuan());
     }
+  };
+};
+
+export const setKeyword = (keyword) => {
+  return {
+    type: SET_KEYWORD,
+    keyword,
   };
 };

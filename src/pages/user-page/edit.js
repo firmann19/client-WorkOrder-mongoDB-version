@@ -50,7 +50,6 @@ function EditUser() {
 
   const fetchOneUsers = async () => {
     const res = await getData(`/user/${id}`);
-
     setForm({
       ...form,
       avatar: res.data.data.image.name,
@@ -80,7 +79,7 @@ function EditUser() {
         },
         value: res?.data?.data?.posisi._id,
       },
-      roles: {
+      role: {
         label: res?.data?.data?.role.role,
         target: {
           name: "role",

@@ -43,7 +43,7 @@ function WorkOrderPage() {
     }).then(async (result) => {
       if (result.isConfirmed) {
         const payload = {
-          StatusPengerjaan: status === "On Progress" ? "Pending" : "On Progress",
+          StatusPengerjaan: status === "Pending" ? "On Progress" : "Pending",
         };
         const res = await putData(`/checkout/${id}/statuspengerjaan`, payload);
         if (res?.data?.data) {

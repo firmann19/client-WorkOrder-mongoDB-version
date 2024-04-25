@@ -94,8 +94,8 @@ function EditUserInput({ form, lists, handleChange, handleSubmit, isLoading }) {
             placeholder={"Pilih role anda..."}
             name="role"
             isClearable={true}
-            value={form.role}
-            options={lists.role}
+            value={form?.role}
+            options={lists.roles}
             handleChange={(e) => handleChange(e)}
           />
         </Col>

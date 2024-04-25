@@ -1,70 +1,23 @@
 import React from "react";
 import { Col, Form, Row } from "react-bootstrap";
+import SelectBox from "../partikel/selectBox";
 
-function HistoryChangeInput({ form, getNameManager }) {
+function HistoryChangeInput({ form, getNameManager, handleChange, options }) {
   return (
     <Form method="post" className="form-register">
-      <Row className="mt-4 mb-4">
-        <Col className="ms-2">
-          <Form.Label>User</Form.Label>
+      <Row>
+        <Col xs={12} md={6} className="mb-3">
+          <Form.Label>Pengaju</Form.Label>
           <Form.Control
             name="userRequestWO"
             value={form?.userRequestWO}
             type="text"
-            readOnly
             disabled
+            readOnly
           />
         </Col>
 
-        <Col className="me-3">
-          <Form.Label>Departement</Form.Label>
-          <Form.Control
-            name="departementUser"
-            value={form?.departementUser}
-            type="text"
-            readOnly
-            disabled
-          />
-        </Col>
-      </Row>
-
-      <Row className="mt-4 mb-4">
-        <Col className="ms-2">
-          <Form.Label>Nama Sparepart</Form.Label>
-          <Form.Control
-            name="namaSparepart"
-            value={form?.namaSparepart}
-            type="text"
-            readOnly
-            disabled
-          />
-        </Col>
-
-        <Col className="me-3">
-          <Form.Label>Harga Satuan</Form.Label>
-          <Form.Control
-            name="harga"
-            value={form?.harga}
-            type="text"
-            readOnly
-            disabled
-          />
-        </Col>
-      </Row>
-
-      <Row className="mt-4 mb-4">
-        <Col className="ms-2">
-          <Form.Label>Jumlah Order</Form.Label>
-          <Form.Control
-            name="jumlahOrder"
-            value={form?.jumlahOrder}
-            type="text"
-            readOnly
-            disabled
-          />
-        </Col>
-
-        <Col className="me-3">
+        <Col xs={12} md={6} className="mb-3">
           <Form.Label>Manager IT</Form.Label>
           <Form.Control
             name="HeadIT"
@@ -76,17 +29,67 @@ function HistoryChangeInput({ form, getNameManager }) {
         </Col>
       </Row>
 
-      <Form.Group className="ms-2 me-3">
-        <Form.Label>Alasan</Form.Label>
-        <Form.Control
-          as="textarea"
-          name="alasan"
-          rows={3}
-          value={form?.alasan}
-          readOnly
-          disabled
-        />
-      </Form.Group>
+      <Row>
+        <Col xs={12} md={6} className="mb-3">
+          <Form.Label>Nama Sparepart</Form.Label>
+          <Form.Control
+            name="namaSparepart"
+            value={form?.namaSparepart}
+            type="text"
+            readOnly
+            disabled
+          />
+        </Col>
+
+        <Col xs={12} md={6} className="mb-3">
+          <Form.Label>Kode Sparepart</Form.Label>
+          <Form.Control
+            name="kodeSparepart"
+            value={form?.kodeSparepart}
+            type="text"
+            readOnly
+            disabled
+          />
+        </Col>
+      </Row>
+
+      <Row>
+        <Col xs={12} md={6} className="mb-3">
+          <Form.Label>Harga Satuan</Form.Label>
+          <Form.Control
+            name="harga"
+            value={form?.harga}
+            type="text"
+            readOnly
+            disabled
+          />
+        </Col>
+
+        <Col xs={12} md={6} className="mb-3">
+          <Form.Label>Jumlah Order</Form.Label>
+          <Form.Control
+            name="jumlahOrder"
+            value={form?.jumlahOrder}
+            type="text"
+            readOnly
+            disabled
+          />
+        </Col>
+      </Row>
+
+      <Row>
+        <Col xs={12}>
+          <Form.Label>Alasan</Form.Label>
+          <Form.Control
+            as="textarea"
+            name="alasan"
+            rows={3}
+            value={form?.alasan}
+            readOnly
+            disabled
+          />
+        </Col>
+      </Row>
     </Form>
   );
 }

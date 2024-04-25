@@ -14,25 +14,29 @@ import Footer from "../../components/Footer";
 function CreateChangeSparepart() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [user, setUser] = useState(null);
+  const [userId, setUserId] = useState(null);
   const [getManager, setGetManager] = useState(null);
   const [getNameManager, setGetNameManager] = useState(null);
   const [form, setForm] = useState({
-    userRequestWO: "",
-    departementUser: "",
     namaSparepart: "",
+    kodeSparepart: "",
     harga: "",
     jumlahOrder: "",
     alasan: "",
-    HeadIT: "",
   });
 
   useEffect(() => {
     const fecthData = () => {
-      let { getManager, getNameManager } = localStorage.getItem("auth")
+      let { user, userId, getManager, getNameManager } = localStorage.getItem(
+        "auth"
+      )
         ? JSON.parse(localStorage.getItem("auth"))
         : {};
       setGetManager(getManager);
       setGetNameManager(getNameManager);
+      setUser(user);
+      setUserId(userId);
     };
     fecthData();
   }, []);
@@ -53,8 +57,9 @@ function CreateChangeSparepart() {
     setIsLoading(true);
 
     const payload = {
-      userRequestWO: form.userRequestWO,
+      userRequestWO: userId,
       departementUser: form.departementUser,
+      kodeSparepart: form.kodeSparepart,
       namaSparepart: form.namaSparepart,
       harga: form.harga,
       jumlahOrder: form.jumlahOrder,
@@ -86,7 +91,7 @@ function CreateChangeSparepart() {
   return (
     <>
       <Navbar />
-      <Container md={12} style={{ height: "80vh" }}>
+      <Container md={12} style={{ height: "100vh" }}>
         <BreadCrumb
           textSecound={"Work Order"}
           urlSecound={"/work-order-page"}
@@ -101,6 +106,7 @@ function CreateChangeSparepart() {
               Pergantian Sparepart
             </Card.Title>
             <ChangeSparepartInput
+              user={user}
               form={form}
               getNameManager={getNameManager}
               isLoading={isLoading}

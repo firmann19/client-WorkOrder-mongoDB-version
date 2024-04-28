@@ -146,11 +146,11 @@ function ChangeSparepartPage() {
 
         <Table
           status={pengajuans.status}
-          thead={["Pengaju", "Sparepart", "Kode", "Status", "Aksi"]}
+          thead={["Pengaju", "Sparepart", "Kode Peralatan", "Status", "Aksi"]}
           data={pengajuans.data}
           tbody={[
             "UserRequestName",
-            "NamaPeralatan",
+            "NamaSparepart",
             "KodePeralatan",
             "StatusPengajuan",
             "Aksi",

@@ -16,7 +16,7 @@ function ChangeSparepartInput({
         <Col xs={12} md={6} className="mb-3">
           <Form.Label>Pengaju</Form.Label>
           <Form.Control
-            name="userRequestWO"
+            name="StaffITRequest"
             value={user}
             type="text"
             disabled
@@ -48,12 +48,14 @@ function ChangeSparepartInput({
         </Col>
 
         <Col xs={12} md={6} className="mb-3">
-          <Form.Label>Kode Sparepart</Form.Label>
+          <Form.Label>Kode Peralatan</Form.Label>
           <Form.Control
-            name="kodeSparepart"
-            value={form?.kodeSparepart}
+            name="KodeBarang"
+            value={form?.KodeBarang}
             type="text"
             onChange={handleChange}
+            disabled
+            readOnly
           />
         </Col>
       </Row>

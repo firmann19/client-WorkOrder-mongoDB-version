@@ -57,8 +57,6 @@ function ConfirmationWO() {
   };
 
   useEffect(() => {
-    fetchOneWO();
-
     const fecthData = () => {
       let { user, userId, getManager, getNameManager } = localStorage.getItem(
         "auth"
@@ -70,7 +68,9 @@ function ConfirmationWO() {
       setGetManager(getManager);
       setGetNameManager(getNameManager);
     };
+    
     fecthData();
+    fetchOneWO();
   }, [dispatch]);
 
   const handleChange = async (e) => {

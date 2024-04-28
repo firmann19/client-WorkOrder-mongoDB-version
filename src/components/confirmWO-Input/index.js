@@ -2,6 +2,7 @@ import React from "react";
 import SButton from "../partikel/Button";
 import { Col, Form, Row } from "react-bootstrap";
 import "../../styles/workOrder.css";
+import { useNavigate, useParams } from "react-router-dom";
 
 function ConfirmWOInput({
   form,
@@ -11,6 +12,10 @@ function ConfirmWOInput({
   handleSubmit,
   isLoading,
 }) {
+  const { id } = useParams();
+
+  const navigate = useNavigate();
+
   return (
     <Form method="post" className="form-confirmation">
       <Row className="mt-4 mb-4 d-flex flex-wrap">
@@ -93,7 +98,7 @@ function ConfirmWOInput({
             label="Perbaikan"
             value="perbaikan"
             onChange={handleChange}
-            checked={form.selectedAction === 'perbaikan'}
+            checked={form.selectedAction === "perbaikan"}
           />
         </Col>
 
@@ -105,7 +110,7 @@ function ConfirmWOInput({
             label="Pergantian"
             value="pergantian"
             onChange={handleChange}
-            checked={form.selectedAction === 'pergantian'}
+            checked={form.selectedAction === "pergantian"}
           />
         </Col>
 
@@ -117,7 +122,7 @@ function ConfirmWOInput({
             label="Request_Data"
             value="request_data"
             onChange={handleChange}
-            checked={form.selectedAction === 'request_data'}
+            checked={form.selectedAction === "request_data"}
           />
         </Col>
 
@@ -129,7 +134,7 @@ function ConfirmWOInput({
             label="Others"
             value="others"
             onChange={handleChange}
-            checked={form.selectedAction === 'others'}
+            checked={form.selectedAction === "others"}
           />
         </Col>
       </Row>
@@ -158,7 +163,10 @@ function ConfirmWOInput({
         </Col>
       </Row>
 
-      <SButton className="w-40 btn-confirmation" href="/create-changeSparepart">
+      <SButton
+        className="w-40 btn-confirmation"
+        action={() => navigate(`/create-changeSparepart/${id}`)}
+      >
         Ajukan Pergantian
       </SButton>
 

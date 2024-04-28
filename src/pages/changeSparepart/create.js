@@ -4,8 +4,8 @@ import { Card, Container } from "react-bootstrap";
 import SAlert from "../../components/partikel/Alert";
 import BreadCrumb from "../../components/partikel/Breadcrumb";
 import ChangeSparepartInput from "../../components/changeSparepart-Input";
-import { useNavigate } from "react-router-dom";
-import { postData } from "../../utils/fetch";
+import { useNavigate, useParams } from "react-router-dom";
+import { getData, postData} from "../../utils/fetch";
 import { useEffect } from "react";
 import { setNotif } from "../../redux/notif/actions";
 import { useDispatch } from "react-redux";
@@ -14,17 +14,29 @@ import Footer from "../../components/Footer";
 function CreateChangeSparepart() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { id } = useParams();
   const [user, setUser] = useState(null);
   const [userId, setUserId] = useState(null);
   const [getManager, setGetManager] = useState(null);
   const [getNameManager, setGetNameManager] = useState(null);
   const [form, setForm] = useState({
+    StaffITRequest: "",
+    HeadIT: "",
     namaSparepart: "",
     kodeSparepart: "",
     harga: "",
     jumlahOrder: "",
     alasan: "",
   });
+
+  const fetchOneWO = async () => {
+    const res = await getData(`/checkout/${id}`);
+
+    setForm({
+      ...form,
+      KodeBarang: res.data.data.KodeBarang,
+    });
+  };
 
   useEffect(() => {
     const fecthData = () => {
@@ -39,6 +51,7 @@ function CreateChangeSparepart() {
       setUserId(userId);
     };
     fecthData();
+    fetchOneWO();
   }, []);
 
   const [alert, setAlert] = useState({
@@ -57,23 +70,22 @@ function CreateChangeSparepart() {
     setIsLoading(true);
 
     const payload = {
-      userRequestWO: userId,
-      departementUser: form.departementUser,
-      kodeSparepart: form.kodeSparepart,
+      StaffITRequest: userId,
       namaSparepart: form.namaSparepart,
+      kodeSparepart: form.KodeBarang,
       harga: form.harga,
       jumlahOrder: form.jumlahOrder,
       alasan: form.alasan,
       HeadIT: getManager,
     };
 
-    const res = await postData(`/changeSparepart`, payload);
+    const res = await postData(`/changeSparepart/${id}`, payload);
     if (res?.data?.data) {
       dispatch(
         setNotif(
           true,
           "success",
-          `berhasil tambah ChangeSparepart ${res.data.data.namaSparepart}`
+          `berhasil tambah ChangeSparepart ${res.data.data.NamaBarang}`
         )
       );
       navigate("/changeSparepart-page");

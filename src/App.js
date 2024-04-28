@@ -54,7 +54,7 @@ function App() {
         />
         <Route path="/group-page" element={<GroupPage />} />
         <Route
-          path="/create-changeSparepart"
+          path="/create-changeSparepart/:id"
           element={<CreateChangeSparepart />}
         />
         <Route path="/changeSparepart-page" element={<ChangeSparepartPage />} />

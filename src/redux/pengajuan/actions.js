@@ -43,7 +43,6 @@ export const fetchPengajuan = () => {
       };
 
       let res = await debouncedFetchPengajuan("/changeSparepart", params);
-      console.log("test", res)
 
       res.data.data.forEach((res) => {
         res.UserRequestName = res.StaffITRequest.nama;

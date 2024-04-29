@@ -11,9 +11,9 @@ function HistoryChangeSparepart() {
   const { id } = useParams();
   const [getNameManager, setGetNameManager] = useState(null);
   const [form, setForm] = useState({
-    userRequestWO: "",
-    kodeSparepart: "",
+    StaffITRequest: "",
     namaSparepart: "",
+    kodeSparepart: "",
     harga: "",
     jumlahOrder: "",
     alasan: "",
@@ -25,9 +25,9 @@ function HistoryChangeSparepart() {
 
     setForm({
       ...form,
-      userRequestWO: res.data.data.userRequestWO.nama,
-      kodeSparepart: res.data.data.kodeSparepart,
+      StaffITRequest: res.data.data.StaffITRequest.nama,
       namaSparepart: res.data.data.namaSparepart,
+      kodeSparepart: res.data.data.kodeSparepart,
       harga: res.data.data.harga,
       jumlahOrder: res.data.data.jumlahOrder,
       alasan: res.data.data.alasan,

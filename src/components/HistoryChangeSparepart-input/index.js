@@ -1,6 +1,5 @@
 import React from "react";
 import { Col, Form, Row } from "react-bootstrap";
-import SelectBox from "../partikel/selectBox";
 
 function HistoryChangeInput({ form, getNameManager, handleChange, options }) {
   return (
@@ -9,8 +8,8 @@ function HistoryChangeInput({ form, getNameManager, handleChange, options }) {
         <Col xs={12} md={6} className="mb-3">
           <Form.Label>Pengaju</Form.Label>
           <Form.Control
-            name="userRequestWO"
-            value={form?.userRequestWO}
+            name="StaffITRequest"
+            value={form?.StaffITRequest}
             type="text"
             disabled
             readOnly
@@ -42,7 +41,7 @@ function HistoryChangeInput({ form, getNameManager, handleChange, options }) {
         </Col>
 
         <Col xs={12} md={6} className="mb-3">
-          <Form.Label>Kode Sparepart</Form.Label>
+          <Form.Label>Kode Peralatan</Form.Label>
           <Form.Control
             name="kodeSparepart"
             value={form?.kodeSparepart}

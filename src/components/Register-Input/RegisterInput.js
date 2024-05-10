@@ -99,7 +99,7 @@ function RegisterInput({ form, lists, handleChange, handleSubmit, isLoading }) {
             name="role"
             isClearable={true}
             value={form.role}
-            options={lists.role}
+            options={lists.roles}
             handleChange={(e) => handleChange(e)}
             className="text-lg"
           />

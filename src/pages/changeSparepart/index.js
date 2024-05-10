@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Button from "../../components/partikel/Button";
 import SAlert from "../../components/partikel/Alert";
 import Swal from "sweetalert2";
-import { deleteData } from "../../utils/fetch";
+import { deleteData, putData } from "../../utils/fetch";
 import { setNotif } from "../../redux/notif/actions";
 import Navbar from "../../components/navbar";
 import { fetchPengajuan, setKeyword } from "../../redux/pengajuan/actions";
@@ -22,74 +22,6 @@ function ChangeSparepartPage() {
   useEffect(() => {
     dispatch(fetchPengajuan());
   }, [dispatch, pengajuans.keyword]);
-
-  // const handleChangeStatus = (id, status) => {
-  //   Swal.fire({
-  //     title: "Apa kamu yakin?",
-  //     text: "",
-  //     icon: "warning",
-  //     showCancelButton: true,
-  //     confirmButtonColor: "#3085d6",
-  //     cancelButtonColor: "#d33",
-  //     confirmButtonText: "Iya, Ubah Status",
-  //     cancelButtonText: "Batal",
-  //   }).then(async (result) => {
-  //     if (result.isConfirmed) {
-  //       const payload = {
-  //         statusPengajuan:
-  //           status === "Belum Diketahui" ? "Diterima" : "Belum Diketahui",
-  //       };
-  //       const res = await putData(
-  //         `/changeSparepart/${id}/approveStatusPengajuan`,
-  //         payload
-  //       );
-
-  //       dispatch(
-  //         setNotif(
-  //           true,
-  //           "success",
-  //           `berhasil ubah status ChangeSparepart ${res.data.data.namaSparepart}`
-  //         )
-  //       );
-
-  //       dispatch(fetchPengajuan());
-  //     }
-  //   });
-  // };
-
-  // const handleChangeStatusSecond = (id, status) => {
-  //   Swal.fire({
-  //     title: "Apa kamu yakin?",
-  //     text: "",
-  //     icon: "warning",
-  //     showCancelButton: true,
-  //     confirmButtonColor: "#3085d6",
-  //     cancelButtonColor: "#d33",
-  //     confirmButtonText: "Iya, Ubah Status",
-  //     cancelButtonText: "Batal",
-  //   }).then(async (result) => {
-  //     if (result.isConfirmed) {
-  //       const payload = {
-  //         statusPengajuan:
-  //           status === "Belum Diketahui" ? "Ditolak" : "Belum Diketahui",
-  //       };
-  //       const res = await putData(
-  //         `/changeSparepart/${id}/rejectStatusPengajuan`,
-  //         payload
-  //       );
-
-  //       dispatch(
-  //         setNotif(
-  //           true,
-  //           "success",
-  //           `berhasil ubah status ChangeSparepart ${res.data.data.namaSparepart}`
-  //         )
-  //       );
-
-  //       dispatch(fetchPengajuan());
-  //     }
-  //   });
-  // };
 
   const handleDelete = (id) => {
     Swal.fire({
@@ -106,7 +38,13 @@ function ChangeSparepartPage() {
         if (result.isConfirmed) {
           const res = await deleteData(`/changeSparepart/${id}`);
           if (res?.data?.data) {
-            dispatch(setNotif(true, "success", `Berhasil hapus pengajuan ganti sparepart`));
+            dispatch(
+              setNotif(
+                true,
+                "success",
+                `Berhasil hapus pengajuan ganti sparepart`
+              )
+            );
             dispatch(fetchPengajuan());
           }
         }
@@ -114,15 +52,47 @@ function ChangeSparepartPage() {
     });
   };
 
-  const handlePreviewHistory = (id) => {
+  const handleChangeStatus = (id, status) => {
     Swal.fire({
       html: `<iframe src="/changeSparepart-page/historyChangeSparepart-page/${id}" style="width:100%; height: 600px;"></iframe>`,
       width: "60%",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Update",
-      cancelButtonText: "Batal",
+      confirmButtonText: "Diterima",
+      cancelButtonText: "Ditolak",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        const newStatus =
+          status === "Diterima" ? "Belum Diketahui" : "Diterima";
+        const payload = {
+          statusPengajuan: newStatus,
+        };
+        const res = await putData(
+          `/changeSparepart/${id}/approveStatusPengajuan`,
+          payload
+        );
+        if (res?.data?.data) {
+          dispatch(
+            setNotif(true, "success", `Berhasil ubah status changeSparepart`)
+          );
+          dispatch(fetchPengajuan());
+        }
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        // Jika tombol Ditolak ditekan
+        const payload = {
+          statusPengajuan: status === "Ditolak" ? "Belum Diketahui" : "Ditolak",
+        };
+        const res = await putData(
+          `/changeSparepart/${id}/rejectStatusPengajuan`,
+          payload
+        );
+        if (res?.data?.data) {
+          dispatch(
+            setNotif(true, "success", `Berhasil ubah status changeSparepart`)
+          );
+          dispatch(fetchPengajuan());
+        }
+      }
     });
   };
 
@@ -161,7 +131,7 @@ function ChangeSparepartPage() {
                 className={"mx-2"}
                 variant="success"
                 size={"sm"}
-                action={() => handlePreviewHistory(id, statusPengajuan)}
+                action={() => handleChangeStatus(id, statusPengajuan)}
               >
                 Preview
               </Button>

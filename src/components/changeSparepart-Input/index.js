@@ -11,10 +11,10 @@ function ChangeSparepartInput({
   user,
 }) {
   return (
-    <Form method="post" className="form-register">
+    <Form method="post" className="form-changeSparepart">
       <Row>
         <Col xs={12} md={6} className="mb-3">
-          <Form.Label>Pengaju</Form.Label>
+          <Form.Label className="label">Pengaju</Form.Label>
           <Form.Control
             name="StaffITRequest"
             value={user}
@@ -25,7 +25,7 @@ function ChangeSparepartInput({
         </Col>
 
         <Col xs={12} md={6} className="mb-3">
-          <Form.Label>Manager IT</Form.Label>
+          <Form.Label className="label">Manager IT</Form.Label>
           <Form.Control
             name="HeadIT"
             value={getNameManager}
@@ -38,7 +38,7 @@ function ChangeSparepartInput({
 
       <Row>
         <Col xs={12} md={6} className="mb-3">
-          <Form.Label>Nama Sparepart</Form.Label>
+          <Form.Label className="label">Nama Sparepart</Form.Label>
           <Form.Control
             name="namaSparepart"
             value={form?.namaSparepart}
@@ -48,7 +48,7 @@ function ChangeSparepartInput({
         </Col>
 
         <Col xs={12} md={6} className="mb-3">
-          <Form.Label>Kode Peralatan</Form.Label>
+          <Form.Label className="label">Kode Peralatan</Form.Label>
           <Form.Control
             name="KodeBarang"
             value={form?.KodeBarang}
@@ -62,7 +62,7 @@ function ChangeSparepartInput({
 
       <Row>
         <Col xs={12} md={6} className="mb-3">
-          <Form.Label>Harga Satuan</Form.Label>
+          <Form.Label className="label">Harga Satuan</Form.Label>
           <Form.Control
             name="harga"
             value={form?.harga}
@@ -72,7 +72,7 @@ function ChangeSparepartInput({
         </Col>
 
         <Col xs={12} md={6} className="mb-3">
-          <Form.Label>Jumlah Order</Form.Label>
+          <Form.Label className="label">Jumlah Order</Form.Label>
           <Form.Control
             name="jumlahOrder"
             value={form?.jumlahOrder}
@@ -84,7 +84,7 @@ function ChangeSparepartInput({
 
       <Row>
         <Col xs={12}>
-          <Form.Label>Alasan</Form.Label>
+          <Form.Label className="label">Alasan</Form.Label>
           <Form.Control
             as="textarea"
             name="alasan"
@@ -97,11 +97,10 @@ function ChangeSparepartInput({
 
       <div className="mx-auto mt-5" style={{ maxWidth: "400px" }}>
         <SButton
-          className="w-100"
+          className="w-100 btn-changeSparepart"
           loading={isLoading}
           disabled={isLoading}
           action={handleSubmit}
-          variant="danger"
         >
           Submit
         </SButton>

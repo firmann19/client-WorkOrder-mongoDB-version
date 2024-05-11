@@ -114,9 +114,9 @@ function CreateChangeSparepart() {
         </div>
         <Card className="m-auto mb-5 card-changeSparepart">
           <Card.Body>
-            <Card.Title className="text-center mb-5">
+            <h2 className="title fw-bold color-palette-1 text-center mb-5">
               Pergantian Sparepart
-            </Card.Title>
+            </h2>
             <ChangeSparepartInput
               user={user}
               form={form}

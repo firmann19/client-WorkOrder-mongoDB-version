@@ -1,4 +1,4 @@
-.form-confirmation, .form-history-wo {   
+.form-confirmation, .form-history-wo, .form-changeSparepart {   
     .label {
         font-family: 'Quicksand', sans-serif;
         font-weight: 600;
@@ -41,9 +41,9 @@
     }
 }
 
-.departement .btn-departement, .form-confirmation .btn-confirmation, .edit-departement .btn-departement{
+.departement .btn-departement, .form-confirmation .btn-confirmation, .edit-departement .btn-departement, .form-changeSparepart .btn-changeSparepart{
     font-family: 'Quicksand', sans-serif;
-	  font-weight: bold;
+	font-weight: bold;
     background-color: #4D17E2;
 }
 

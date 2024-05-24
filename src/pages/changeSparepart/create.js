@@ -85,7 +85,7 @@ function CreateChangeSparepart() {
         setNotif(
           true,
           "success",
-          `berhasil tambah ChangeSparepart ${res.data.data.NamaBarang}`
+          `berhasil tambah ChangeSparepart ${res.data.data.kodeSparepart}`
         )
       );
       navigate("/changeSparepart-page");

@@ -138,6 +138,29 @@ function HistoryWO() {
     });
   };
 
+  const printDocument = () => {
+    const input = document.getElementById("pdf-content");
+
+    html2canvas(input).then((canvas) => {
+      const imgData = canvas.toDataURL("image/png");
+      const printWindow = window.open("", "_blank");
+      printWindow.document.open();
+      printWindow.document.write(
+        "<html><head><title>Work Order</title></head><body>"
+      );
+      printWindow.document.write(
+        `<img id="print-img" src="${imgData}" style="width: 100%; height: auto;" />`
+      );
+      printWindow.document.write("</body></html>");
+      printWindow.document.close();
+      printWindow.document.getElementById("print-img").onload = () => {
+        printWindow.focus();
+        printWindow.print();
+        printWindow.close();
+      };
+    });
+  };
+
   return (
     <>
       <Navbar />
@@ -161,9 +184,9 @@ function HistoryWO() {
             </button>
           </div>
           <div className="p-2">
-            <a href="#" className="btn btn-secondary">
+            <button onClick={printDocument} className="btn btn-secondary">
               <i className="icon-printer"></i> Print
-            </a>
+            </button>
           </div>
         </div>
         <Card
@@ -181,12 +204,12 @@ function HistoryWO() {
               padding: "20px",
             }}
           >
-          <h2 className="title fw-bold color-palette-1 text-center">
-            Work Order
-          </h2>
-          <div className="pt-4 mt-4">
-            <HistoryWOInput form={form} isLoading={isLoading} />
-          </div>
+            <h2 className="title fw-bold color-palette-1 text-center">
+              Work Order
+            </h2>
+            <div className="pt-4 mt-4">
+              <HistoryWOInput form={form} isLoading={isLoading} />
+            </div>
           </Card.Body>
         </Card>
         <SButton

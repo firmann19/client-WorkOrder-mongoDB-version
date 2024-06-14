@@ -5,7 +5,7 @@ import SAlert from "../../components/partikel/Alert";
 import BreadCrumb from "../../components/partikel/Breadcrumb";
 import ChangeSparepartInput from "../../components/changeSparepart-Input";
 import { useNavigate, useParams } from "react-router-dom";
-import { getData, postData} from "../../utils/fetch";
+import { getData, postData } from "../../utils/fetch";
 import { useEffect } from "react";
 import { setNotif } from "../../redux/notif/actions";
 import { useDispatch } from "react-redux";
@@ -85,7 +85,7 @@ function CreateChangeSparepart() {
         setNotif(
           true,
           "success",
-          `berhasil tambah ChangeSparepart ${res.data.data.kodeSparepart}`
+          `berhasil mengajukan pergantian sparepart ${res.data.data.namaSparepart}`
         )
       );
       navigate("/changeSparepart-page");

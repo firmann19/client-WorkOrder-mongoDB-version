@@ -78,20 +78,36 @@ function ChangeSparepartPage() {
           dispatch(fetchPengajuan());
         }
       } else if (result.dismiss === Swal.DismissReason.cancel) {
-        // Jika tombol Ditolak ditekan
-        const payload = {
-          statusPengajuan: status === "Ditolak" ? "Belum Diketahui" : "Ditolak",
-        };
-        const res = await putData(
-          `/changeSparepart/${id}/rejectStatusPengajuan`,
-          payload
-        );
-        if (res?.data?.data) {
-          dispatch(
-            setNotif(true, "success", `Berhasil ubah status changeSparepart`)
-          );
-          dispatch(fetchPengajuan());
-        }
+        Swal.fire({
+          title: "Masukkan Alasan Penolakan",
+          input: "textarea",
+          inputPlaceholder: "Tulis alasan penolakan di sini...",
+          showCancelButton: true,
+          confirmButtonColor: "#d33",
+          confirmButtonText: "Submit",
+          cancelButtonText: "Batal",
+        }).then(async (reasonResult) => {
+          if (reasonResult.isConfirmed && reasonResult.value) {
+            const payload = {
+              statusPengajuan: "Ditolak",
+              alasanReject: reasonResult.value,
+            };
+            const res = await putData(
+              `/changeSparepart/${id}/rejectStatusPengajuan`,
+              payload
+            );
+            if (res?.data?.data) {
+              dispatch(
+                setNotif(
+                  true,
+                  "success",
+                  `Berhasil ubah status changeSparepart`
+                )
+              );
+              dispatch(fetchPengajuan());
+            }
+          }
+        });
       }
     });
   };

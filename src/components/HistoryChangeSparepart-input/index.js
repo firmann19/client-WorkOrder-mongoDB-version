@@ -89,6 +89,19 @@ function HistoryChangeInput({ form, getNameManager, handleChange, options }) {
           />
         </Col>
       </Row>
+
+      <Row>
+        <Col xs={12} md={12} className="mt-3">
+          <Form.Label>Status Pengajuan</Form.Label>
+          <Form.Control
+            name="statusPengajuan"
+            value={form?.statusPengajuan}
+            type="text"
+            readOnly
+            disabled
+          />
+        </Col>
+      </Row>
     </Form>
   );
 }

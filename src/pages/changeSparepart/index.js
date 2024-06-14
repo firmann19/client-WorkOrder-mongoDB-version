@@ -12,9 +12,11 @@ import { setNotif } from "../../redux/notif/actions";
 import Navbar from "../../components/navbar";
 import { fetchPengajuan, setKeyword } from "../../redux/pengajuan/actions";
 import Footer from "../../components/Footer";
+import { useNavigate } from "react-router-dom";
 
 function ChangeSparepartPage() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const notif = useSelector((state) => state.notif);
   const pengajuans = useSelector((state) => state.pengajuans);
@@ -112,6 +114,10 @@ function ChangeSparepartPage() {
     });
   };
 
+  const handleDetail = (id) => {
+    navigate(`/changeSparepart-page/historyChangeSparepart-page/${id}`);
+  };
+
   return (
     <>
       <Navbar />
@@ -143,16 +149,25 @@ function ChangeSparepartPage() {
           ]}
           customAction={(id, statusPengajuan = "") => {
             return (
-              <Button
-                className={"mx-2"}
-                variant="success"
-                size={"sm"}
-                action={() => handleChangeStatus(id, statusPengajuan)}
-              >
-                Preview
-              </Button>
+              <>
+                <Button
+                  size={"sm"}
+                  action={() => handleChangeStatus(id, statusPengajuan)}
+                >
+                  Change Status
+                </Button>
+                <Button
+                  size={"sm"}
+                  variant={"success"}
+                  action={() => handleDetail(id)}
+                  className={"ms-2"}
+                >
+                  Detail
+                </Button>
+              </>
             );
           }}
+          
           deleteAction={(id) => handleDelete(id)}
         />
       </Container>
